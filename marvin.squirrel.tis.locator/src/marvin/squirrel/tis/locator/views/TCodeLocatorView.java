@@ -4,6 +4,7 @@
 package marvin.squirrel.tis.locator.views;
 
 import marvin.squirrel.tis.locator.constants.TCodeLocatorConstants;
+import marvin.squirrel.tis.locator.data.handler.CodeDataLoader;
 import marvin.squirrel.tis.locator.views.controller.TCodeLocatorController;
 
 import org.eclipse.jface.layout.GridDataFactory;
@@ -79,6 +80,8 @@ public class TCodeLocatorView extends ViewPart {
 		
 		regListeners();
 		initController();
+		
+		CodeDataLoader.getInstance();
 	}
 	
 	private void initController(){
