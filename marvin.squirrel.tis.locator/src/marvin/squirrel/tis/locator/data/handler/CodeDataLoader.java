@@ -3,6 +3,10 @@
  */
 package marvin.squirrel.tis.locator.data.handler;
 
+import org.eclipse.core.internal.registry.osgi.Activator;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
+
 import marvin.squirrel.tis.locator.data.model.GlobalModel;
 
 /**
@@ -24,8 +28,9 @@ public class CodeDataLoader {
 		return dataLoader;
 	}
 	
-	public GlobalModel load(){
+	public GlobalModel loadData(){
 		globalModel = new GlobalModel();
+		
 		
 		return globalModel;
 	}

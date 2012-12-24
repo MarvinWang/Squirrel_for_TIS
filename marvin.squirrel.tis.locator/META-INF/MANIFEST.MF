@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Locator
 Bundle-SymbolicName: marvin.squirrel.tis.locator;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: marvin.squirrel.tis.locator.Activator
+Bundle-Activator: marvin.squirrel.tis.locator.TISLocatorPlugin
 Bundle-Vendor: Marvin Wang
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

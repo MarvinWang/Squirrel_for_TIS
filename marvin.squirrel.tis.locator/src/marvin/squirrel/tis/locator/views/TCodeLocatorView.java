@@ -81,7 +81,7 @@ public class TCodeLocatorView extends ViewPart {
 		regListeners();
 		initController();
 		
-		CodeDataLoader.getInstance();
+		CodeDataLoader.getInstance().loadData();
 	}
 	
 	private void initController(){
