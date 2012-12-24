@@ -3,11 +3,17 @@
  */
 package marvin.squirrel.tis.locator.data.handler;
 
-import org.eclipse.core.internal.registry.osgi.Activator;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Platform;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
+import marvin.squirrel.tis.locator.TISLocatorPlugin;
 import marvin.squirrel.tis.locator.data.model.GlobalModel;
+
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.osgi.framework.Bundle;
 
 /**
  * @author Marvin
@@ -31,7 +37,17 @@ public class CodeDataLoader {
 	public GlobalModel loadData(){
 		globalModel = new GlobalModel();
 		
+		Bundle bundle = Platform.getBundle(TISLocatorPlugin.PLUGIN_ID);
+		URL datasourceURL = FileLocator.find(bundle, new Path("/dataware_house/DataSource.xml"), null);
 		
+		try {
+			URL fileURL = FileLocator.toFileURL(datasourceURL);
+			String path = fileURL.getPath();
+			File datasourceFile = new File(path);
+			String abPath = datasourceFile.getAbsolutePath();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return globalModel;
 	}
 
