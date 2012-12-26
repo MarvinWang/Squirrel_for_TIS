@@ -34,25 +34,36 @@ public class DataSourceLoader {
 		return dataLoader;
 	}
 	
-	public GlobalModel loadData(){
+	public GlobalModel loadData() throws IOException{
 		globalModel = new GlobalModel();
-		
-		Bundle bundle = Platform.getBundle(TISLocatorPlugin.PLUGIN_ID);
-		URL datasourceURL = FileLocator.find(bundle, new Path("/dataware_house/DataSource.xml"), null);
-		
+		File datasourceFile;
 		try {
-			URL fileURL = FileLocator.toFileURL(datasourceURL);
-			String path = fileURL.getPath();
-			File datasourceFile = new File(path);
-			String abPath = datasourceFile.getAbsolutePath();
+			datasourceFile = fetchDataSourceFile();
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new IOException();
 		}
+		buildGlobalModel(datasourceFile, globalModel);
 		return globalModel;
 	}
 
+	private File fetchDataSourceFile() throws IOException{
+		Bundle bundle = Platform.getBundle(TISLocatorPlugin.PLUGIN_ID);
+		URL datasourceURL = FileLocator.find(bundle, new Path("/dataware_house/DataSource.xml"), null);
+		URL fileURL = FileLocator.toFileURL(datasourceURL);
+		String path = fileURL.getPath();
+		File datasourceFile = new File(path);
+		return datasourceFile;
+	}
 	
-	
+	/**
+	 * Builds a global model for code locator, this global model is used to operate in memory.
+	 * @param datasourceFile
+	 * @param globalModel
+	 */
+	protected void buildGlobalModel(File datasourceFile, GlobalModel globalModel){
+		
+	}
 	
 	/**
 	 * @return the globalModel
