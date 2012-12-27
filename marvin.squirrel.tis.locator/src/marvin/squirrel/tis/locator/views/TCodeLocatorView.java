@@ -5,6 +5,7 @@ package marvin.squirrel.tis.locator.views;
 
 import marvin.squirrel.tis.locator.constants.TCodeLocatorConstants;
 import marvin.squirrel.tis.locator.data.handler.DataSourceLoader;
+import marvin.squirrel.tis.locator.exception.DataSourceException;
 import marvin.squirrel.tis.locator.views.controller.TCodeLocatorController;
 
 import org.eclipse.jface.layout.GridDataFactory;
@@ -80,12 +81,19 @@ public class TCodeLocatorView extends ViewPart {
 		
 		regListeners();
 		initController();
-		
-		DataSourceLoader.getInstance();
+		loadData();
 	}
 	
 	private void initController(){
 		
+	}
+	
+	private void loadData(){
+		try {
+			DataSourceLoader.getInstance().loadData();
+		} catch (DataSourceException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

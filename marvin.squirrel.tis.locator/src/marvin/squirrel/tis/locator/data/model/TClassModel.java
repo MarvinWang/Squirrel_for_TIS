@@ -14,9 +14,17 @@ public class TClassModel {
 	
 	private String method;
 	
+	private String packageStr;
+	
+	private String pluginName;
+	
 	private String desc;
 	
 	public TClassModel(){}
+	
+	public TClassModel(String className){
+		this.className = className;
+	}
 
 	/**
 	 * @return the className
@@ -58,6 +66,22 @@ public class TClassModel {
 	 */
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public String getPackageStr() {
+		return packageStr;
+	}
+
+	public void setPackageStr(String packageStr) {
+		this.packageStr = packageStr;
+	}
+
+	public String getPluginName() {
+		return pluginName;
+	}
+
+	public void setPluginName(String pluginName) {
+		this.pluginName = pluginName;
 	}
 	
 	

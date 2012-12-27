@@ -12,17 +12,13 @@ import java.util.List;
  */
 public class GlobalModel {
 
-	private List<TClassModel> classModels;
+	private List<TFunctionModel> functionModels;
 	
 	public GlobalModel(){
-		classModels = new ArrayList<TClassModel>();
+		functionModels = new ArrayList<TFunctionModel>();
 	}
 
-	/**
-	 * @return the classModels
-	 */
-	public List<TClassModel> getClassModels() {
-		return classModels;
+	public void addFunctionModel(TFunctionModel functionModel){
+		functionModels.add(functionModel);
 	}
-	
 }

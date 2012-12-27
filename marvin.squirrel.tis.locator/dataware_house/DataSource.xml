@@ -1,4 +1,4 @@
-<functions>
+<global>
 <!-- Product should be "DI", "DQ", "MDM", "ESB" and etc.. -->
 <!--Version info includes Branch_4.2, Branch_5.0, Branch5.1, Branch5.2 and Trunk. 
 Later, if any other versions is released, it needs to add here. Default value is All. -->
@@ -10,26 +10,14 @@ Later, if any other versions is released, it needs to add here. Default value is
     For Login Dialog:
 	For Component: "COMP"
 -->
-  <function name="" type="" product="">
-     <classInfo name="">
-	    <package></package>
-		<plugin url=""></plugin>
-		<method></method>
-	 </classInfo>
-	 <desc></desc>
-	 <versionInfo>
-		<version>All</version>
-	 </versionInfo>
-  </function>
-  
   <function name="Retrieve Schema for displaying tables" type="" product="DI">
      <classInfo name="SelectorTreeViewerProvider.java">
-	    <package>org.talend.repository.ui.wizards/metadata/table/database</package>
-		<plugin url="tos">org.talend.repository.metadata</plugin>
+	    <package>org.talend.repository.ui.wizards.metadata.table.database</package>
+		<plugin>org.talend.repository.metadata</plugin>
 		<method>getChildren(Object)</method>
 	 </classInfo>
 	 <desc>In retrieve schema wizard, when you are in the second wizard page, you click the + to expand the database tree to display all tables.</desc>
-	 <versionInfo>
+	 <versionInfo url="tos">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -37,11 +25,11 @@ Later, if any other versions is released, it needs to add here. Default value is
   <function name="Retrieve Schema for right-clicking" type="" product="DI">
      <classInfo name="AbstractCreateTableAction.java">
 	    <package>org.talend.repository.metadata</package>
-		<plugin url="tos">org.talend.repository.metadata</plugin>
+		<plugin>org.talend.repository.metadata</plugin>
 		<method>openDatabaseTableWizard(dbConnItem,metadataTable,forceReadOnly,repNode,creation)</method>
 	 </classInfo>
 	 <desc>When you right-click a db connection, select "Retrieve Schema", it will triger this action.</desc>
-	 <versionInfo>
+	 <versionInfo url="tos">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -49,21 +37,21 @@ Later, if any other versions is released, it needs to add here. Default value is
   <function name="Check for DB wizard" type="" product="">
      <classInfo name="DatabaseForm.java">
 	    <package>org.talend.repository.metadata</package>
-		<plugin url="tos">org.talend.repository.metadata</plugin>
+		<plugin>org.talend.repository.metadata</plugin>
 		<method>checkConnection()</method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="tos">
 		<version>All</version>
 	 </versionInfo>
   </function>
   <function name="Finish on Context Group of Repository" type="REP_Context" product="DI">
      <classInfo name="ContextWizard.java">
 	    <package>org.talend.repository.ui.wizards.context</package>
-		<plugin url="">org.talend.metadata.managment.ui</plugin>
+		<plugin>org.talend.metadata.managment.ui</plugin>
 		<method>boolean performFinish()</method>
 	 </classInfo>
-	 <versionInfo>
+	 <versionInfo url="">
 		<version>All</version>
 	 </versionInfo>
 	 <desc></desc>
@@ -71,21 +59,22 @@ Later, if any other versions is released, it needs to add here. Default value is
   <function name="Finish on DB connection wizard" type="" product="DI">
      <classInfo name="DatabaseWizard.java">
 	    <package>org.talend.repository.ui.wizards.metadata.connection.database</package>
-		<plugin url="">org.talend.repository.metadata</plugin>
+		<plugin>org.talend.repository.metadata</plugin>
 		<method>boolean performFinish()</method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="">
 		<version>All</version>
 	 </versionInfo>
+  </function>
   <function name="Choose a remote connection" type="" product="DI">
      <classInfo name="">
 	    <package></package>
-		<plugin url=""></plugin>
+		<plugin></plugin>
 		<method></method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -93,11 +82,11 @@ Later, if any other versions is released, it needs to add here. Default value is
     <function name="Run a job" type="" product="DI">
      <classInfo name="ProcessComposite.java">
 	    <package>org.talend.designer.runprocess.ui</package>
-		<plugin url="">org.talend.designer.runprocess</plugin>
+		<plugin>org.talend.designer.runprocess</plugin>
 		<method>execButtonPressed()</method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -105,11 +94,11 @@ Later, if any other versions is released, it needs to add here. Default value is
     <function name="Data Viewer" type="" product="DI">
      <classInfo name="ViewDataSchemaAction.java">
 	    <package>org.talend.designer.component.preview</package>
-		<plugin url="tos">org.talend.designer.component.preview</plugin>
+		<plugin>org.talend.designer.component.preview</plugin>
 		<method>void doRun()</method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="tos">
 		<version>All</version>
 	 </versionInfo>
   </function>  
@@ -117,11 +106,11 @@ Later, if any other versions is released, it needs to add here. Default value is
     <function name="Run a remote job" type="" product="DI">
      <classInfo name="RunRemoteProcessContext.java">
 	    <package>org.talend.designer.runprocess.remote</package>
-		<plugin url="">org.talend.designer.runprocess.remote</plugin>
+		<plugin>org.talend.designer.runprocess.remote</plugin>
 		<method>exe(Shell)</method>
 	 </classInfo>
 	 <desc>In the RUN job view, select a remote job server you defined in preference, then clieck "RUN" button.</desc>
-	 <versionInfo>
+	 <versionInfo url="">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -129,11 +118,11 @@ Later, if any other versions is released, it needs to add here. Default value is
     <function name="Get context parameters for command line" type="" product="DI">
      <classInfo name="JobScriptsManager.java">
 	    <package>org.talend.repository.ui.wizards.exportjob.scriptsmanager</package>
-		<plugin url="">org.talend.repository</plugin>
+		<plugin>org.talend.repository</plugin>
 		<method>String getSettingContextParametersValue()</method>
 	 </classInfo>
 	 <desc>When run a job in a remote job server, it will first generate the "context_para" parameters.</desc>
-	 <versionInfo>
+	 <versionInfo url="">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -141,23 +130,23 @@ Later, if any other versions is released, it needs to add here. Default value is
     <function name="Branch Management" type="REP_View" product="DI">
      <classInfo name="SwitchBranchAction.java">
 	    <package>org.talend.repository.svnprovider.actions</package>
-		<plugin url="">org.talend.repository.svnprovider</plugin>
+		<plugin>org.talend.repository.svnprovider</plugin>
 		<method>run()</method>
 	 </classInfo>
 	 <desc>This is an action for switch management, there is a button in repository view when the current is remote project.</desc>
 	 <versionInfo>
-		<version>All</version>
+		<version url="">All</version>
 	 </versionInfo>
   </function>
 
     <function name="Create launcher file for remote job server" type="REP_View" product="DI">
      <classInfo name="JobScriptsManager.java">
 	    <package>org.talend.repository.ui.wizards.exportjob.scriptsmanager</package>
-		<plugin url="">org.talend.repository</plugin>
+		<plugin>org.talend.repository</plugin>
 		<method>getLauncher(args...)</method>
 	 </classInfo>
 	 <desc>This method will create a file named *.sh or *.bat for a job that runs in a remote job server.</desc>
-	 <versionInfo>
+	 <versionInfo url="">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -165,11 +154,11 @@ Later, if any other versions is released, it needs to add here. Default value is
   <function name="Remote Preference" type="" product="DI">
      <classInfo name="">
 	    <package></package>
-		<plugin url="tis_shared"></plugin>
+		<plugin></plugin>
 		<method></method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="tis_shared">
 		<version>All</version>
 	 </versionInfo>
   </function>  
@@ -177,11 +166,11 @@ Later, if any other versions is released, it needs to add here. Default value is
   <function name="Rename Action" type="REP_View" product="DI">
      <classInfo name="RenameFolderAction.java">
 	    <package>org.talend.repository.ui.actions</package>
-		<plugin url="tos">org.talend.core.repository</plugin>
+		<plugin>org.talend.core.repository</plugin>
 		<method>doRun()</method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="tos">
 		<version>All</version>
 	 </versionInfo>
   </function>
@@ -189,33 +178,33 @@ Later, if any other versions is released, it needs to add here. Default value is
   <function name="Linker from table to Tree" type="COMP" product="DI">
      <classInfo name="TableToTreeLinker.java">
 	    <package>org.talend.commons.ui.swt.linking</package>
-		<plugin url="tos">org.talend.commons.ui</plugin>
+		<plugin>org.talend.commons.ui</plugin>
 		<method>drawBackfround(GC)</method>
 	 </classInfo>
 	 <desc>Some component like tFileOutputMSXML, it needs a linker from schema. First, create a job and drag "tLogRow" and "tFileOutputMSXML" into job, then add schemas for tLogRow and make a line between the two components. Then double click "tFileOutputMSXML", and make a line from left table to right tree.</desc>
-	 <versionInfo>
+	 <versionInfo url="tos">
 		<version>All</version>
 	 </versionInfo>
   </function>
   <function name="Query Text in Component View" type="" product="DI">
      <classInfo name="SqlMemoController.java">
 	    <package>org.talend.designer.core.ui.editor.properties.controllers</package>
-		<plugin url="tos">org.talend.designer.core</plugin>
+		<plugin>org.talend.designer.core</plugin>
 		<method>createControl()</method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="tos">
 		<version>All</version>
 	 </versionInfo>
   </function> 
   <function name="Check out a revision of job" type="" product="DI">
      <classInfo name="CheckoutAction.java">
 	    <package>org.talend.repository.svnprovider.ui.history</package>
-		<plugin url="tis_shared">org.talend.repository.svnprovider</plugin>
+		<plugin>org.talend.repository.svnprovider</plugin>
 		<method>run()</method>
 	 </classInfo>
 	 <desc>This action is from SVN History in Job View, when right-clicking the revision, then select "check out", it will be triggered.</desc>
-	 <versionInfo>
+	 <versionInfo url="tis_shared">
 		<version>All</version>
 	 </versionInfo>
   </function> 
@@ -223,11 +212,12 @@ Later, if any other versions is released, it needs to add here. Default value is
     <function name="tMap Component: edit columns for output table" type="" product="DI">
      <classInfo name="">
 	    <package></package>
-		<plugin url="tis_shared"></plugin>
+		<plugin></plugin>
 		<method></method>
 	 </classInfo>
 	 <desc></desc>
-	 <versionInfo>
+	 <versionInfo url="tis_shared">
 		<version>All</version>
 	 </versionInfo>
-</funcitons>
+	</function>
+</global>
