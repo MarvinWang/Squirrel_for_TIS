@@ -21,4 +21,16 @@ public class GlobalModel {
 	public void addFunctionModel(TFunctionModel functionModel){
 		functionModels.add(functionModel);
 	}
+
+	public List<TFunctionModel> getFunctionModels() {
+		return functionModels;
+	}
+	
+	public TFunctionModel lookupByFunctionName(String functionName){
+		for(TFunctionModel functionModel : functionModels){
+			if(functionName.equals(functionModel.getName()))
+				return functionModel;
+		}
+		return null;
+	}
 }

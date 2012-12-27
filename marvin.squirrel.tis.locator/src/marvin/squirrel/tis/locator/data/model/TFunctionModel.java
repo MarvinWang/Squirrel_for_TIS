@@ -32,6 +32,22 @@ public class TFunctionModel {
 		this.name = name;
 	}
 
+	public String getRepository(){
+		return versionInfoModel.getSvnDir();
+	}
+	
+	public String getPluginName(){
+		return classModel.getPluginName();
+	}
+	
+	public String getMethodName(){
+		return classModel.getMethod();
+	}
+	
+	public String getClassName(){
+		return classModel.getClassName();
+	}
+	
 	public String getName() {
 		return name;
 	}

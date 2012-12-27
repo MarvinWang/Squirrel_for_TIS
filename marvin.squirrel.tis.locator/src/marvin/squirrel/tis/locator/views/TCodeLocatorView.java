@@ -3,9 +3,9 @@
  */
 package marvin.squirrel.tis.locator.views;
 
-import marvin.squirrel.tis.locator.constants.TCodeLocatorConstants;
 import marvin.squirrel.tis.locator.data.handler.DataSourceLoader;
 import marvin.squirrel.tis.locator.exception.DataSourceException;
+import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.views.controller.TCodeLocatorController;
 
 import org.eclipse.jface.layout.GridDataFactory;
@@ -42,7 +42,28 @@ public class TCodeLocatorView extends ViewPart {
 	
 	private TCodeLocatorController controller;
 	
-	private List classNameList;
+	private List functionNameList;
+	
+	private Label pluginLbl;//Plugin Label
+	
+	private Label classNameLbl;//Class Name Label
+	
+	private Label methodLbl;//Method label
+	
+	private Label descLbl;//Function description label
+	
+	private Label repositoryLbl;//Repository in SVN
+	
+	private Text pluginTxt;//Plugin Text
+	
+	private Text classNameTxt;//Class Name Text
+	
+	private Text methodTxt;//Method Text
+	
+	private Text descText;//Description Text
+	
+	private Text repositoryTxt;//Repository Text
+	
 	
 	/**
 	 * 
@@ -75,17 +96,17 @@ public class TCodeLocatorView extends ViewPart {
 		
 //		The composite at right of main composite.
 		Composite mainRightComp = new Composite(mainSashForm, SWT.NONE);
-		mainLeftComp.setLayout(new GridLayout(1,false));
+		mainRightComp.setLayout(new GridLayout(2,false));
 		
-		createMainLeftContents(mainRightComp);
+		createMainRightContents(mainRightComp);
 		
 		regListeners();
-		initController();
 		loadData();
+		initController();
 	}
 	
 	private void initController(){
-		
+		controller = new TCodeLocatorController(this);
 	}
 	
 	private void loadData(){
@@ -102,7 +123,7 @@ public class TCodeLocatorView extends ViewPart {
 	 */
 	protected void createSearchContents(Composite parent){
 		keyWordLbl = new Label(parent,SWT.NONE);
-		keyWordLbl.setText(TCodeLocatorConstants.VIEW_LOCATOR_LBL_KEYWORK);
+		keyWordLbl.setText(Messages.getString("TCodeLocatorView.lbl.keywords"));
 		GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.CENTER).applyTo(keyWordLbl);
 		
 		keyWordTxt = new Text(parent, SWT.BORDER);
@@ -110,7 +131,7 @@ public class TCodeLocatorView extends ViewPart {
 		
 		locateBtn = new Button(parent, SWT.NONE);
 		locateBtn.setEnabled(false);
-		locateBtn.setText(TCodeLocatorConstants.VIEW_LOCATOR_BTN_LOCATE);
+		locateBtn.setText(Messages.getString("TCodeLocatorView.btn.locate"));
 		GridDataFactory.fillDefaults().applyTo(locateBtn);
 	}
 	
@@ -119,24 +140,62 @@ public class TCodeLocatorView extends ViewPart {
 	 * @param parent
 	 */
 	protected void createMainLeftContents(Composite parent){
-		Label classNameLbl = new Label(parent, SWT.NONE);
-		classNameLbl.setText(TCodeLocatorConstants.VIEW_LOCATOR_LBL_CLASSNAME);
+		Label functionNameLbl = new Label(parent, SWT.NONE);
+		functionNameLbl.setText(Messages.getString("TCodeLocatorView.lbl.functionName"));
 		
-		classNameList = new List(parent, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
-		GridDataFactory.fillDefaults().grab(true, true).applyTo(classNameList);
-//		classNameList.setItems(new String[]{"dd", "ddf","dddddddddddddddddddddddddd", "ggg","yyy", "eee","jjj","333"});
-		
+		functionNameList = new List(parent, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.MULTI);
+		GridDataFactory.fillDefaults().grab(true, true).applyTo(functionNameList);
 	}
 	
-	
+	/**
+	 * 
+	 * @param parent
+	 */
 	protected void createMainRightContents(Composite parent){
+//		Plugin widgets
+		pluginLbl = new Label(parent, SWT.NONE);
+		pluginLbl.setText(Messages.getString("TCodeLocatorView.lbl.plugin"));
 		
+		pluginTxt = new Text(parent, SWT.BORDER);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(pluginTxt);
+		
+//		Class Name widgets
+		classNameLbl = new Label(parent, SWT.NONE);
+		classNameLbl.setText(Messages.getString("TCodeLocatorView.lbl.className"));
+		
+		classNameTxt = new Text(parent, SWT.BORDER);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(classNameTxt);
+		
+//		Method widgets
+		methodLbl = new Label(parent, SWT.NONE);
+		methodLbl.setText(Messages.getString("TCodeLocatorView.lbl.methodName"));
+		
+		methodTxt = new Text(parent, SWT.BORDER);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(methodTxt);
+		
+//		Description widgets
+		descLbl = new Label(parent, SWT.NONE);
+		descLbl.setText(Messages.getString("TCodeLocatorView.lbl.description"));
+		GridDataFactory.fillDefaults().span(1, 4).grab(false, false).applyTo(descLbl);
+		
+		descText = new Text(parent, SWT.BORDER | SWT.MULTI | SWT.WRAP | SWT.V_SCROLL);
+		GridDataFactory.fillDefaults().span(1, 4).grab(true, true).applyTo(descText);
+		
+//		Repository widgets
+		repositoryLbl = new Label(parent, SWT.NONE);
+		repositoryLbl.setText(Messages.getString("TCodeLocatorView.lbl.reporitory"));
+		
+		repositoryTxt = new Text(parent, SWT.BORDER);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(repositoryTxt);
 	}
 
-	
+	/**
+	 * Registers all listeners for widgets required.
+	 */
 	protected void regListeners(){
 		regLocateBtnListener();
 		regKeyWordTxtListener();
+		regFunctionNameListListener();
 	}
 	
 	/**
@@ -167,6 +226,15 @@ public class TCodeLocatorView extends ViewPart {
 		});
 	}
 	
+	private void regFunctionNameListListener(){
+		functionNameList.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e) {
+				String[] list = functionNameList.getSelection();
+				controller.doFunctionNameSelect(list);
+			}
+		});
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
 	 */
@@ -175,8 +243,48 @@ public class TCodeLocatorView extends ViewPart {
 
 	}
 
-	public List getClassNameList() {
-		return classNameList;
+	public List getFunctionNameList() {
+		return functionNameList;
+	}
+
+	public Text getPluginTxt() {
+		return pluginTxt;
+	}
+
+	public void setPluginTxt(Text pluginTxt) {
+		this.pluginTxt = pluginTxt;
+	}
+
+	public Text getClassNameTxt() {
+		return classNameTxt;
+	}
+
+	public void setClassNameTxt(Text classNameTxt) {
+		this.classNameTxt = classNameTxt;
+	}
+
+	public Text getMethodTxt() {
+		return methodTxt;
+	}
+
+	public void setMethodTxt(Text methodTxt) {
+		this.methodTxt = methodTxt;
+	}
+
+	public Text getDescText() {
+		return descText;
+	}
+
+	public void setDescText(Text descText) {
+		this.descText = descText;
+	}
+
+	public Text getRepositoryTxt() {
+		return repositoryTxt;
+	}
+
+	public void setRepositoryTxt(Text repositoryTxt) {
+		this.repositoryTxt = repositoryTxt;
 	}
 
 }

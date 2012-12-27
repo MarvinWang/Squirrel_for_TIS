@@ -38,7 +38,6 @@ public class DataSourceLoader {
 	private GlobalModel globalModel;
 	
 	private DataSourceLoader(){
-		globalModel = new GlobalModel();
 	}
 	
 	public static DataSourceLoader getInstance(){
@@ -48,16 +47,21 @@ public class DataSourceLoader {
 	}
 	
 	/**
-	 * Loads data from data source file to build a global mode <code>GlobalModel</code>.
+	 * Loads data from data source file to build a global mode <code>GlobalModel</code>. When the viewer is opened, 
+	 * then this method is invoked. If the memory mode is changed, before invoking this method, you should invoke 
+	 * {@link #pushModelToFile()} first.
 	 * @return
 	 * @throws IOException If file "DataSource.xml" can not find.
 	 */
 	public GlobalModel loadData() throws DataSourceException{
+		globalModel = new GlobalModel();
 		File datasourceFile = fetchDataSourceFile();
 		buildGlobalModel(datasourceFile, globalModel);
 		return globalModel;
 	}
 
+	public void pushModelToFile(){}
+	
 	/**
 	 * Fetches the data source file from the current plugin directory.
 	 * @return

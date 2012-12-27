@@ -9,9 +9,9 @@ package marvin.squirrel.tis.locator.constants;
  */
 public class TCodeLocatorConstants {
 
-	public static final String VIEW_LOCATOR_LBL_KEYWORK = "Key Word";
-	
-	public static final String VIEW_LOCATOR_BTN_LOCATE = "Locate";
-	
-	public static final String VIEW_LOCATOR_LBL_CLASSNAME = "Class Name";
+//	public static final String VIEW_LOCATOR_LBL_KEYWORK = "Key Word";
+//	
+//	public static final String VIEW_LOCATOR_BTN_LOCATE = "Locate";
+//	
+//	public static final String VIEW_LOCATOR_LBL_CLASSNAME = "Class Name";
 }

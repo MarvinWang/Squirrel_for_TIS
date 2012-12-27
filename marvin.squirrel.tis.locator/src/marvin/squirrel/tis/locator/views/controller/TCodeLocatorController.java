@@ -5,9 +5,10 @@ package marvin.squirrel.tis.locator.views.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import marvin.squirrel.tis.locator.data.handler.DataSourceLoader;
+import marvin.squirrel.tis.locator.data.model.GlobalModel;
+import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.views.TCodeLocatorView;
 
 /**
@@ -24,17 +25,39 @@ public class TCodeLocatorController {
 		this.view = view;
 	}
 	
+	/**
+	 * Do locating when clicking the button named "Locate".
+	 * @param keyWords
+	 */
 	public void doLocate(String keyWords){
-		List<String> classNameList = new ArrayList<String>();
-		Pattern pattern = Pattern.compile(keyWords);
-		Matcher matcher = pattern.matcher("");
-	    boolean b= matcher.matches();
-	    
-	    if(b){
-	    	
-	    	if(classNameList.size() > 0){
-	    		view.getClassNameList().setItems(classNameList.toArray(new String[classNameList.size()]));
-	    	}
-	    }
+		List<String> functionNameList = new ArrayList<String>();
+		GlobalModel globalModel = DataSourceLoader.getInstance().getGlobalModel();
+		List<TFunctionModel> functionModels = globalModel.getFunctionModels();
+		if(functionModels != null && functionModels.size() > 0){
+			for(TFunctionModel functionModel : functionModels){
+				String functionName = functionModel.getName();
+				if(functionName.contains(keyWords)){
+					functionNameList.add(functionName);
+				}
+			}
+		}
+		view.getFunctionNameList().setItems(functionNameList.toArray(new String[functionNameList.size()]));
+	}
+	
+	/**
+	 * 
+	 * @param functionNames
+	 */
+	public void doFunctionNameSelect(String[] functionNames){
+		String firstFunctionName = functionNames[0];
+		GlobalModel globalModel = DataSourceLoader.getInstance().getGlobalModel();
+		TFunctionModel functionModel = globalModel.lookupByFunctionName(firstFunctionName);
+		
+		
+		view.getPluginTxt().setText(functionModel.getPluginName());
+		view.getClassNameTxt().setText(functionModel.getClassName());
+		view.getMethodTxt().setText(functionModel.getMethodName());
+		view.getDescText().setText(functionModel.getDesc());
+		view.getRepositoryTxt().setText(functionModel.getRepository());
 	}
 }
