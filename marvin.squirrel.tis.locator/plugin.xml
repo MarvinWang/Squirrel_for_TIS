@@ -28,5 +28,15 @@
          </view>
       </perspectiveExtension>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="marvin.squirrel.tis.locator.editors.FunctionLocatorEditor"
+            default="false"
+            id="marvin.squirrel.tis.locator.editor"
+            matchingStrategy="marvin.squirrel.tis.locator.editors.FunctionLocatorEditorStrategy"
+            name="Function">
+      </editor>
+   </extension>
 
 </plugin>

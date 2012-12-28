@@ -3,11 +3,16 @@
  */
 package marvin.squirrel.tis.locator.views;
 
+import marvin.squirrel.tis.locator.actions.OpenFunctionEditorAction;
 import marvin.squirrel.tis.locator.data.handler.DataSourceLoader;
 import marvin.squirrel.tis.locator.exception.DataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.views.controller.TCodeLocatorController;
 
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -22,6 +27,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 /**
@@ -64,6 +72,8 @@ public class TCodeLocatorView extends ViewPart {
 	
 	private Text repositoryTxt;//Repository Text
 	
+	private Action openFunctionEditorAction;
+	
 	
 	/**
 	 * 
@@ -103,6 +113,9 @@ public class TCodeLocatorView extends ViewPart {
 		regListeners();
 		loadData();
 		initController();
+		
+		makeActions();
+		contributeToActionBars();
 	}
 	
 	private void initController(){
@@ -233,6 +246,29 @@ public class TCodeLocatorView extends ViewPart {
 				controller.doFunctionNameSelect(list);
 			}
 		});
+	}
+	
+	private void contributeToActionBars() {
+		IActionBars bars = getViewSite().getActionBars();
+		fillLocalToolBar(bars.getToolBarManager());
+	}
+	
+	private void fillLocalToolBar(IToolBarManager manager) {
+		manager.add(openFunctionEditorAction);
+//		manager.add(new Separator());
+	}
+	
+	protected void makeActions(){
+		makeAddFunctionAction();
+	}
+	
+	/**
+	 * 
+	 */
+	private void makeAddFunctionAction(){
+		openFunctionEditorAction = new OpenFunctionEditorAction(Messages.getString("TCodeLocatorView.action.openFunctionEditor.text")
+				, PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
+		openFunctionEditorAction.setToolTipText(Messages.getString("TCodeLocatorView.action.openFunctionEditor.tooltip"));
 	}
 	
 	/* (non-Javadoc)
