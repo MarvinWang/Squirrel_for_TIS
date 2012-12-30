@@ -10,9 +10,7 @@ import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.views.controller.TCodeLocatorController;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;

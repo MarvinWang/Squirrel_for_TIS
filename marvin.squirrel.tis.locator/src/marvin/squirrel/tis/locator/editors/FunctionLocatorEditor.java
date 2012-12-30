@@ -67,6 +67,10 @@ public class FunctionLocatorEditor extends EditorPart {
 	
 	private Combo repositoryCombo;
 	
+	private Label svnVersionLbl;
+	
+	private Combo svnVersionCombo;
+	
 	/**
 	 * 
 	 */
@@ -198,12 +202,30 @@ public class FunctionLocatorEditor extends EditorPart {
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).span(1, 3).grab(false, false).applyTo(descriptionLbl);
 		
 		descriptionTxt = new Text(basicGroup, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.WRAP);
-		GridData gd = new GridData();
-		gd.verticalAlignment = SWT.FILL;
-		gd.verticalSpan = 3;
-		gd.grabExcessHorizontalSpace = true;
-		gd.grabExcessVerticalSpace = true;
-		GridDataFactory.createFrom(gd).applyTo(descriptionTxt);
+		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).span(3, 3).grab(true, true).applyTo(descriptionTxt);
+		
+//		SVN Group
+		svnGroup = new Group(parent, SWT.NONE);
+		svnGroup.setText(Messages.getString("FunctionLocatorEditor.grp.svn"));
+		GridDataFactory.fillDefaults().span(1, 1).grab(true, true).applyTo(svnGroup);
+		
+		svnGroup.setLayout(new GridLayout(4,false));
+		
+//		SVN Repository
+		repositoryLbl = new Label(svnGroup, SWT.NONE);
+		repositoryLbl.setText(Messages.getString("FunctionLocatorEditor.lbl.repository"));
+		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.CENTER).span(1, 1).grab(false, false).applyTo(repositoryLbl);
+		
+		repositoryCombo = new Combo(svnGroup, SWT.NONE);
+		GridDataFactory.fillDefaults().span(1, 1).grab(true, false).applyTo(repositoryCombo);
+		
+//		SVN Version
+		svnVersionLbl = new Label(svnGroup, SWT.NONE); 
+		svnVersionLbl.setText(Messages.getString("FunctionLocatorEditor.lbl.version"));
+		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.CENTER).span(1, 1).grab(false, false).applyTo(svnVersionLbl);
+		
+		svnVersionCombo = new Combo(svnGroup, SWT.NONE);
+		GridDataFactory.fillDefaults().span(1, 1).grab(true, false).applyTo(svnVersionCombo);
 	}
 
 	/* (non-Javadoc)
