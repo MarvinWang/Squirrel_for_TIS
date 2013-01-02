@@ -33,4 +33,17 @@ public class GlobalModel {
 		}
 		return null;
 	}
+	
+	/**
+	 * 
+	 * @param functionName
+	 * @return
+	 */
+	public boolean hasFunctionName(String functionName){
+		TFunctionModel functionModel = lookupByFunctionName(functionName);
+		if(functionModel != null)
+			return true;
+		else
+			return false;
+	}
 }

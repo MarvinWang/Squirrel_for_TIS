@@ -3,6 +3,8 @@
  */
 package marvin.squirrel.tis.locator.actions;
 
+import marvin.squirrel.tis.locator.data.handler.ModelProxyFactory;
+import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.editors.FunctionLocatorEditor;
 import marvin.squirrel.tis.locator.editors.FunctionLocatorEditorInput;
 
@@ -51,12 +53,14 @@ public class OpenFunctionEditorAction extends Action {
 	}
 
 	public void run() {
-		IEditorInput editorInput = new FunctionLocatorEditorInput();
+		TFunctionModel functionModel = ModelProxyFactory.newFunctionModel();
+		IEditorInput editorInput = new FunctionLocatorEditorInput(functionModel);
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 			.getActivePage();
-		IEditorPart editor = page.findEditor(editorInput);
+		FunctionLocatorEditor editor = null;
 		try {
-			page.openEditor(editorInput, FunctionLocatorEditor.ID);
+			editor =  (FunctionLocatorEditor)page.openEditor(editorInput, FunctionLocatorEditor.ID);
+			functionModel.addPropertyChangeListener(editor);
 		} catch (PartInitException e) {
 			e.printStackTrace();
 		}
