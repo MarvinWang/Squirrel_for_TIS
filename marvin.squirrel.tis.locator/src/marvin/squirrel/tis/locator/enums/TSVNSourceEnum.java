@@ -1,7 +1,7 @@
 /**
  * 
  */
-package marvin.squirrel.tis.locator.data.model;
+package marvin.squirrel.tis.locator.enums;
 
 /**
  * @author Marvin
