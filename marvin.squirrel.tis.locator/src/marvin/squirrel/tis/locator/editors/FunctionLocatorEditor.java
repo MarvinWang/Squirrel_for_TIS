@@ -3,14 +3,19 @@
  */
 package marvin.squirrel.tis.locator.editors;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import marvin.squirrel.tis.locator.editors.controller.TFunctionEditorController;
 import marvin.squirrel.tis.locator.i18n.Messages;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -27,7 +32,7 @@ import org.eclipse.ui.part.EditorPart;
  * @email mwang@talend.com
  * @date Dec 27, 2012
  */
-public class FunctionLocatorEditor extends EditorPart {
+public class FunctionLocatorEditor extends EditorPart implements PropertyChangeListener{
 
 	public static final String ID = "marvin.squirrel.tis.locator.editor";
 	
@@ -71,6 +76,10 @@ public class FunctionLocatorEditor extends EditorPart {
 	
 	private Combo svnVersionCombo;
 	
+	private TFunctionEditorController controller;
+	
+	private boolean isDirty = false;
+	
 	/**
 	 * 
 	 */
@@ -110,7 +119,7 @@ public class FunctionLocatorEditor extends EditorPart {
 	 */
 	@Override
 	public boolean isDirty() {
-		return false;
+		return isDirty;
 	}
 
 	/* (non-Javadoc)
@@ -140,6 +149,9 @@ public class FunctionLocatorEditor extends EditorPart {
 		createBasicContents(basicComposite);
 		
 		scrolledComposite.setMinSize(basicComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		
+		controller = new TFunctionEditorController(this);
+		regListeners();
 	}
 	
 	protected void createBasicContents(Composite parent){
@@ -227,6 +239,19 @@ public class FunctionLocatorEditor extends EditorPart {
 		svnVersionCombo = new Combo(svnGroup, SWT.NONE);
 		GridDataFactory.fillDefaults().span(1, 1).grab(true, false).applyTo(svnVersionCombo);
 	}
+	
+	protected void regListeners(){
+		regFunctionNameTxtListener();
+	}
+	
+	protected void regFunctionNameTxtListener(){
+		functionNameTxt.addModifyListener(new ModifyListener(){
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				controller.doFunctionNameChange();
+			}});
+	}
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
@@ -234,6 +259,142 @@ public class FunctionLocatorEditor extends EditorPart {
 	@Override
 	public void setFocus() {
 
+	}
+
+	/**
+	 * @return the functionNameTxt
+	 */
+	public Text getFunctionNameTxt() {
+		return functionNameTxt;
+	}
+
+	/**
+	 * @param functionNameTxt the functionNameTxt to set
+	 */
+	public void setFunctionNameTxt(Text functionNameTxt) {
+		this.functionNameTxt = functionNameTxt;
+	}
+
+	/**
+	 * @return the classNameTxt
+	 */
+	public Text getClassNameTxt() {
+		return classNameTxt;
+	}
+
+	/**
+	 * @param classNameTxt the classNameTxt to set
+	 */
+	public void setClassNameTxt(Text classNameTxt) {
+		this.classNameTxt = classNameTxt;
+	}
+
+	/**
+	 * @return the methodTxt
+	 */
+	public Text getMethodTxt() {
+		return methodTxt;
+	}
+
+	/**
+	 * @param methodTxt the methodTxt to set
+	 */
+	public void setMethodTxt(Text methodTxt) {
+		this.methodTxt = methodTxt;
+	}
+
+	/**
+	 * @return the pluginNameTxt
+	 */
+	public Text getPluginNameTxt() {
+		return pluginNameTxt;
+	}
+
+	/**
+	 * @param pluginNameTxt the pluginNameTxt to set
+	 */
+	public void setPluginNameTxt(Text pluginNameTxt) {
+		this.pluginNameTxt = pluginNameTxt;
+	}
+
+	/**
+	 * @return the typeCombo
+	 */
+	public Combo getTypeCombo() {
+		return typeCombo;
+	}
+
+	/**
+	 * @param typeCombo the typeCombo to set
+	 */
+	public void setTypeCombo(Combo typeCombo) {
+		this.typeCombo = typeCombo;
+	}
+
+	/**
+	 * @return the productCombo
+	 */
+	public Combo getProductCombo() {
+		return productCombo;
+	}
+
+	/**
+	 * @param productCombo the productCombo to set
+	 */
+	public void setProductCombo(Combo productCombo) {
+		this.productCombo = productCombo;
+	}
+
+	/**
+	 * @return the descriptionTxt
+	 */
+	public Text getDescriptionTxt() {
+		return descriptionTxt;
+	}
+
+	/**
+	 * @param descriptionTxt the descriptionTxt to set
+	 */
+	public void setDescriptionTxt(Text descriptionTxt) {
+		this.descriptionTxt = descriptionTxt;
+	}
+
+	/**
+	 * @return the repositoryCombo
+	 */
+	public Combo getRepositoryCombo() {
+		return repositoryCombo;
+	}
+
+	/**
+	 * @param repositoryCombo the repositoryCombo to set
+	 */
+	public void setRepositoryCombo(Combo repositoryCombo) {
+		this.repositoryCombo = repositoryCombo;
+	}
+
+	/**
+	 * @return the svnVersionCombo
+	 */
+	public Combo getSvnVersionCombo() {
+		return svnVersionCombo;
+	}
+
+	/**
+	 * @param svnVersionCombo the svnVersionCombo to set
+	 */
+	public void setSvnVersionCombo(Combo svnVersionCombo) {
+		this.svnVersionCombo = svnVersionCombo;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+	 */
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		isDirty = true;
+		this.firePropertyChange(PROP_DIRTY);
+		
 	}
 
 }

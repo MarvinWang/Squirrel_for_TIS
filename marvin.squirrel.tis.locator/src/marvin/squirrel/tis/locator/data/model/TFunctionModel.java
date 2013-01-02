@@ -3,12 +3,14 @@
  */
 package marvin.squirrel.tis.locator.data.model;
 
+import marvin.squirrel.tis.locator.constants.TPropertyForModel;
+
 /**
  * @author Marvin Wang
  * @email mwang@talend.com
  * @date Dec 26, 2012
  */
-public class TFunctionModel {
+public class TFunctionModel extends TAbstractModel{
 	
 	private String name;
 	
@@ -26,9 +28,11 @@ public class TFunctionModel {
 	 * 
 	 */
 	public TFunctionModel() {
+		super();
 	}
 	
 	public TFunctionModel(String name) {
+		super();
 		this.name = name;
 	}
 
@@ -53,7 +57,10 @@ public class TFunctionModel {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if(this.name != name){
+			this.name = name;
+			firePropertyChange(TPropertyForModel.FUNCTION_NAME, this.name, name);
+		}
 	}
 
 	public String getType() {
