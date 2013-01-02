@@ -3,8 +3,6 @@
  */
 package marvin.squirrel.tis.locator.editors;
 
-import marvin.squirrel.tis.locator.data.model.TFunctionModel;
-
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
@@ -15,14 +13,11 @@ import org.eclipse.ui.IPersistableElement;
  * @date Dec 28, 2012
  */
 public class FunctionLocatorEditorInput implements IEditorInput {
-	
-	private TFunctionModel functionModel;
 
 	/**
 	 * 
 	 */
-	public FunctionLocatorEditorInput(TFunctionModel functionModel) {
-		this.functionModel = functionModel;
+	public FunctionLocatorEditorInput() {
 	}
 
 	/* (non-Javadoc)
@@ -30,6 +25,7 @@ public class FunctionLocatorEditorInput implements IEditorInput {
 	 */
 	@Override
 	public Object getAdapter(Class adapter) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -38,6 +34,7 @@ public class FunctionLocatorEditorInput implements IEditorInput {
 	 */
 	@Override
 	public boolean exists() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -46,6 +43,7 @@ public class FunctionLocatorEditorInput implements IEditorInput {
 	 */
 	@Override
 	public ImageDescriptor getImageDescriptor() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -54,7 +52,7 @@ public class FunctionLocatorEditorInput implements IEditorInput {
 	 */
 	@Override
 	public String getName() {
-		return functionModel.getName();
+		return "";
 	}
 
 	/* (non-Javadoc)
@@ -71,23 +69,7 @@ public class FunctionLocatorEditorInput implements IEditorInput {
 	@Override
 	public String getToolTipText() {
 		// TODO Auto-generated method stub
-		return functionModel.getName();
+		return "";
 	}
 
-	/**
-	 * @return the functionModel
-	 */
-	public TFunctionModel getFunctionModel() {
-		return functionModel;
-	}
-
-	/**
-	 * @param functionModel the functionModel to set
-	 */
-	public void setFunctionModel(TFunctionModel functionModel) {
-		this.functionModel = functionModel;
-	}
-
-	
-	
 }

@@ -5,7 +5,6 @@ package marvin.squirrel.tis.locator.views;
 
 import marvin.squirrel.tis.locator.actions.OpenFunctionEditorAction;
 import marvin.squirrel.tis.locator.data.handler.DataSourceLoader;
-import marvin.squirrel.tis.locator.data.handler.ModelProxyFactory;
 import marvin.squirrel.tis.locator.exception.DataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.views.controller.TCodeLocatorController;
@@ -123,7 +122,7 @@ public class TCodeLocatorView extends ViewPart {
 	
 	private void loadData(){
 		try {
-			ModelProxyFactory.getInstance().initModel();
+			DataSourceLoader.getInstance().loadData();
 		} catch (DataSourceException e) {
 			e.printStackTrace();
 		}
