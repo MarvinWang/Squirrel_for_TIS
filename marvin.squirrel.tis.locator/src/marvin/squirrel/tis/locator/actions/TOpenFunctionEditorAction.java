@@ -3,10 +3,10 @@
  */
 package marvin.squirrel.tis.locator.actions;
 
-import marvin.squirrel.tis.locator.data.handler.ModelProxyFactory;
+import marvin.squirrel.tis.locator.data.handler.TModelProxyFactory;
 import marvin.squirrel.tis.locator.data.model.TFunctionModel;
-import marvin.squirrel.tis.locator.editors.FunctionLocatorEditor;
-import marvin.squirrel.tis.locator.editors.FunctionLocatorEditorInput;
+import marvin.squirrel.tis.locator.editors.TCodeLocatorEditor;
+import marvin.squirrel.tis.locator.editors.TCodeLocatorEditorInput;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -21,18 +21,18 @@ import org.eclipse.ui.PlatformUI;
  * @email mwang@talend.com
  * @date Dec 27, 2012
  */
-public class OpenFunctionEditorAction extends Action {
+public class TOpenFunctionEditorAction extends Action {
 
 	/**
 	 * 
 	 */
-	public OpenFunctionEditorAction() {
+	public TOpenFunctionEditorAction() {
 	}
 
 	/**
 	 * @param text
 	 */
-	public OpenFunctionEditorAction(String text) {
+	public TOpenFunctionEditorAction(String text) {
 		super(text);
 	}
 
@@ -40,7 +40,7 @@ public class OpenFunctionEditorAction extends Action {
 	 * @param text
 	 * @param image
 	 */
-	public OpenFunctionEditorAction(String text, ImageDescriptor image) {
+	public TOpenFunctionEditorAction(String text, ImageDescriptor image) {
 		super(text, image);
 	}
 
@@ -48,18 +48,18 @@ public class OpenFunctionEditorAction extends Action {
 	 * @param text
 	 * @param style
 	 */
-	public OpenFunctionEditorAction(String text, int style) {
+	public TOpenFunctionEditorAction(String text, int style) {
 		super(text, style);
 	}
 
 	public void run() {
-		TFunctionModel functionModel = ModelProxyFactory.newFunctionModel();
-		IEditorInput editorInput = new FunctionLocatorEditorInput(functionModel);
+		TFunctionModel functionModel = TModelProxyFactory.newFunctionModel();
+		IEditorInput editorInput = new TCodeLocatorEditorInput(functionModel);
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 			.getActivePage();
-		FunctionLocatorEditor editor = null;
+		TCodeLocatorEditor editor = null;
 		try {
-			editor =  (FunctionLocatorEditor)page.openEditor(editorInput, FunctionLocatorEditor.ID);
+			editor =  (TCodeLocatorEditor)page.openEditor(editorInput, TCodeLocatorEditor.ID);
 			functionModel.addPropertyChangeListener(editor);
 		} catch (PartInitException e) {
 			e.printStackTrace();

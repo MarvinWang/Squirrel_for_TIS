@@ -4,8 +4,8 @@
 package marvin.squirrel.tis.locator.editors.controller;
 
 import marvin.squirrel.tis.locator.data.model.TFunctionModel;
-import marvin.squirrel.tis.locator.editors.FunctionLocatorEditor;
-import marvin.squirrel.tis.locator.editors.FunctionLocatorEditorInput;
+import marvin.squirrel.tis.locator.editors.TCodeLocatorEditor;
+import marvin.squirrel.tis.locator.editors.TCodeLocatorEditorInput;
 
 /**
  * @author Marvin Wang
@@ -14,12 +14,12 @@ import marvin.squirrel.tis.locator.editors.FunctionLocatorEditorInput;
  */
 public class TFunctionEditorController {
 	
-	private FunctionLocatorEditor editor;
-	private FunctionLocatorEditorInput input;
+	private TCodeLocatorEditor editor;
+	private TCodeLocatorEditorInput input;
 
-	public TFunctionEditorController(FunctionLocatorEditor editor){
+	public TFunctionEditorController(TCodeLocatorEditor editor){
 		this.editor = editor;
-		input = (FunctionLocatorEditorInput)editor.getEditorInput();
+		input = (TCodeLocatorEditorInput)editor.getEditorInput();
 	}
 	
 	public void doFunctionNameChange(){

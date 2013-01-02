@@ -8,22 +8,22 @@ package marvin.squirrel.tis.locator.exception;
  * @email mwang@talend.com
  * @date Dec 25, 2012
  */
-public class DataSourceException extends Exception {
+public class TDataSourceException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DataSourceException(){
+	public TDataSourceException(){
 		super();
 	}
 	
-	public DataSourceException(String msg){
+	public TDataSourceException(String msg){
 		super(msg);
 	}
 	
-	public DataSourceException(String msg, Exception ex){
+	public TDataSourceException(String msg, Exception ex){
 		super(msg,ex);
 	}
 }

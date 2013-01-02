@@ -7,7 +7,7 @@ package marvin.squirrel.tis.locator.data.model;
  * @author Marvin
  * @date 2012-12-23
  */
-public enum TSVNSource {
+public enum TSVNSourceEnum {
 
 	TSVN_SOURCE_TOS("tos", "www.talendforge.org/svn/tos"),
 	TSVN_SOURCE_TIS_SHARED("tis_shared","www.talendforge.org/svn/tis_shared"),
@@ -20,7 +20,7 @@ public enum TSVNSource {
 	
 	private String path;
 	
-	TSVNSource(String name, String path){
+	TSVNSourceEnum(String name, String path){
 		this.name = name;
 		this.path = path;
 	}

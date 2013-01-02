@@ -12,12 +12,12 @@ import org.eclipse.ui.IEditorReference;
  * @email mwang@talend.com
  * @date Dec 28, 2012
  */
-public class FunctionLocatorEditorStrategy implements IEditorMatchingStrategy {
+public class TCodeLocatorEditorStrategy implements IEditorMatchingStrategy {
 
 	/**
 	 * 
 	 */
-	public FunctionLocatorEditorStrategy() {
+	public TCodeLocatorEditorStrategy() {
 	}
 
 	/* (non-Javadoc)

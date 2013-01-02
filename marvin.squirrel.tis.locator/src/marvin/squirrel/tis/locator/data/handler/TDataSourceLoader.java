@@ -9,11 +9,11 @@ import java.net.URL;
 import java.util.Iterator;
 
 import marvin.squirrel.tis.locator.TISLocatorPlugin;
-import marvin.squirrel.tis.locator.data.model.GlobalModel;
+import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.data.model.TClassModel;
 import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.data.model.TVersionInfoModel;
-import marvin.squirrel.tis.locator.exception.DataSourceException;
+import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 
 import org.dom4j.Attribute;
@@ -31,18 +31,18 @@ import org.osgi.framework.Bundle;
  * @author Marvin
  * @date 2012-12-23
  */
-public class DataSourceLoader {
+public class TDataSourceLoader {
 
-	private static DataSourceLoader dataLoader;
+	private static TDataSourceLoader dataLoader;
 	
-	private GlobalModel globalModel;
+	private TGlobalModel globalModel;
 	
-	private DataSourceLoader(){
+	private TDataSourceLoader(){
 	}
 	
-	public static DataSourceLoader getInstance(){
+	public static TDataSourceLoader getInstance(){
 		if(dataLoader == null)
-			dataLoader = new DataSourceLoader();
+			dataLoader = new TDataSourceLoader();
 		return dataLoader;
 	}
 	
@@ -53,8 +53,8 @@ public class DataSourceLoader {
 	 * @return
 	 * @throws IOException If file "DataSource.xml" can not find.
 	 */
-	public GlobalModel loadData() throws DataSourceException{
-		globalModel = new GlobalModel();
+	public TGlobalModel loadData() throws TDataSourceException{
+		globalModel = new TGlobalModel();
 		File datasourceFile = fetchDataSourceFile();
 		buildGlobalModel(datasourceFile, globalModel);
 		return globalModel;
@@ -65,9 +65,9 @@ public class DataSourceLoader {
 	/**
 	 * Fetches the data source file from the current plugin directory.
 	 * @return
-	 * @throws DataSourceException 
+	 * @throws TDataSourceException 
 	 */
-	private File fetchDataSourceFile() throws DataSourceException {
+	private File fetchDataSourceFile() throws TDataSourceException {
 		File datasourceFile = null;
 		Bundle bundle = Platform.getBundle(TISLocatorPlugin.PLUGIN_ID);
 		URL datasourceURL = FileLocator.find(bundle, new Path(Messages.getString("DataSourceLoader.datasource.file")), null);
@@ -77,7 +77,7 @@ public class DataSourceLoader {
 			String path = fileURL.getPath();
 			datasourceFile = new File(path);
 		} catch (IOException e) {
-			throw new DataSourceException(Messages.getString("DataSourceLoader.exception.notfound.sourcefile"),e);
+			throw new TDataSourceException(Messages.getString("DataSourceLoader.exception.notfound.sourcefile"),e);
 		}
 		return datasourceFile;
 	}
@@ -86,9 +86,9 @@ public class DataSourceLoader {
 	 * Builds a global model for code locator, this global model is used to operate in memory.
 	 * @param datasourceFile
 	 * @param globalModel
-	 * @throws DataSourceException 
+	 * @throws TDataSourceException 
 	 */
-	protected void buildGlobalModel(File datasourceFile, GlobalModel globalModel) throws DataSourceException{
+	protected void buildGlobalModel(File datasourceFile, TGlobalModel globalModel) throws TDataSourceException{
 		Element root = getDataSourceRootElement(datasourceFile);
 		Iterator<Element> children = root.elementIterator(Messages.getString("DataSource.tag.function"));
 		while(children.hasNext()){
@@ -142,29 +142,29 @@ public class DataSourceLoader {
 	 * Gets the root element of document by reading data source file. Note that the file is red by dom4j.
 	 * @param datasourceFile
 	 * @return
-	 * @throws DataSourceException
+	 * @throws TDataSourceException
 	 */
-	protected Element getDataSourceRootElement(File datasourceFile) throws DataSourceException{
+	protected Element getDataSourceRootElement(File datasourceFile) throws TDataSourceException{
 		SAXReader reader = new SAXReader();
 		try {
 			Document document = reader.read(datasourceFile);
 			return document.getRootElement();
 		} catch (DocumentException e) {
-			throw new DataSourceException(Messages.getString("DataSourceLoader.exception.notfound.sourcefile"),e);
+			throw new TDataSourceException(Messages.getString("DataSourceLoader.exception.notfound.sourcefile"),e);
 		}
 	}
 	
 	/**
 	 * @return the globalModel
 	 */
-	public GlobalModel getGlobalModel() {
+	public TGlobalModel getGlobalModel() {
 		return globalModel;
 	}
 
 	/**
 	 * @param globalModel the globalModel to set
 	 */
-	public void setGlobalModel(GlobalModel globalModel) {
+	public void setGlobalModel(TGlobalModel globalModel) {
 		this.globalModel = globalModel;
 	}
 	

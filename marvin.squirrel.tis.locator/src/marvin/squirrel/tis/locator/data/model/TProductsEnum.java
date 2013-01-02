@@ -8,7 +8,7 @@ package marvin.squirrel.tis.locator.data.model;
  * @email mwang@talend.com
  * @date Dec 26, 2012
  */
-public enum TProducts {
+public enum TProductsEnum {
 
 	TALEND_DI("DI","Data Integation"), 
 	TALEND_DQ("DQ", "Data Quality"), 
@@ -19,11 +19,11 @@ public enum TProducts {
 	
 	private String fullName;
 	
-	TProducts(String name){
+	TProductsEnum(String name){
 		this.name = name;
 	}
 	
-	TProducts(String name, String fullName){
+	TProductsEnum(String name, String fullName){
 		this.name = name;
 		this.fullName = fullName;
 	}

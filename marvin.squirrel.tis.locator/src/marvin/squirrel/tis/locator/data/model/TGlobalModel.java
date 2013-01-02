@@ -10,11 +10,11 @@ import java.util.List;
  * @author Marvin
  * @date 2012-12-23
  */
-public class GlobalModel {
+public class TGlobalModel {
 
 	private List<TFunctionModel> functionModels;
 	
-	public GlobalModel(){
+	public TGlobalModel(){
 		functionModels = new ArrayList<TFunctionModel>();
 	}
 

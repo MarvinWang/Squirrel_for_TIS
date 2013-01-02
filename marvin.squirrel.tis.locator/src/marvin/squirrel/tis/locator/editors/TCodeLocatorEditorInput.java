@@ -14,14 +14,14 @@ import org.eclipse.ui.IPersistableElement;
  * @email mwang@talend.com
  * @date Dec 28, 2012
  */
-public class FunctionLocatorEditorInput implements IEditorInput {
+public class TCodeLocatorEditorInput implements IEditorInput {
 	
 	private TFunctionModel functionModel;
 
 	/**
 	 * 
 	 */
-	public FunctionLocatorEditorInput(TFunctionModel functionModel) {
+	public TCodeLocatorEditorInput(TFunctionModel functionModel) {
 		this.functionModel = functionModel;
 	}
 

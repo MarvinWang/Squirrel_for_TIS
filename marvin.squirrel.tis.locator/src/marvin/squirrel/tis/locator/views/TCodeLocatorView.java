@@ -3,10 +3,10 @@
  */
 package marvin.squirrel.tis.locator.views;
 
-import marvin.squirrel.tis.locator.actions.OpenFunctionEditorAction;
-import marvin.squirrel.tis.locator.data.handler.DataSourceLoader;
-import marvin.squirrel.tis.locator.data.handler.ModelProxyFactory;
-import marvin.squirrel.tis.locator.exception.DataSourceException;
+import marvin.squirrel.tis.locator.actions.TOpenFunctionEditorAction;
+import marvin.squirrel.tis.locator.data.handler.TDataSourceLoader;
+import marvin.squirrel.tis.locator.data.handler.TModelProxyFactory;
+import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.views.controller.TCodeLocatorController;
 
@@ -123,8 +123,8 @@ public class TCodeLocatorView extends ViewPart {
 	
 	private void loadData(){
 		try {
-			ModelProxyFactory.getInstance().initModel();
-		} catch (DataSourceException e) {
+			TModelProxyFactory.getInstance().initModel();
+		} catch (TDataSourceException e) {
 			e.printStackTrace();
 		}
 	}
@@ -265,7 +265,7 @@ public class TCodeLocatorView extends ViewPart {
 	 * 
 	 */
 	private void makeAddFunctionAction(){
-		openFunctionEditorAction = new OpenFunctionEditorAction(Messages.getString("TCodeLocatorView.action.openFunctionEditor.text")
+		openFunctionEditorAction = new TOpenFunctionEditorAction(Messages.getString("TCodeLocatorView.action.openFunctionEditor.text")
 				, PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
 		openFunctionEditorAction.setToolTipText(Messages.getString("TCodeLocatorView.action.openFunctionEditor.tooltip"));
 	}

@@ -6,8 +6,8 @@ package marvin.squirrel.tis.locator.views.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import marvin.squirrel.tis.locator.data.handler.DataSourceLoader;
-import marvin.squirrel.tis.locator.data.model.GlobalModel;
+import marvin.squirrel.tis.locator.data.handler.TDataSourceLoader;
+import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.views.TCodeLocatorView;
 
@@ -31,7 +31,7 @@ public class TCodeLocatorController {
 	 */
 	public void doLocate(String keyWords){
 		List<String> functionNameList = new ArrayList<String>();
-		GlobalModel globalModel = DataSourceLoader.getInstance().getGlobalModel();
+		TGlobalModel globalModel = TDataSourceLoader.getInstance().getGlobalModel();
 		List<TFunctionModel> functionModels = globalModel.getFunctionModels();
 		if(functionModels != null && functionModels.size() > 0){
 			for(TFunctionModel functionModel : functionModels){
@@ -50,7 +50,7 @@ public class TCodeLocatorController {
 	 */
 	public void doFunctionNameSelect(String[] functionNames){
 		String firstFunctionName = functionNames[0];
-		GlobalModel globalModel = DataSourceLoader.getInstance().getGlobalModel();
+		TGlobalModel globalModel = TDataSourceLoader.getInstance().getGlobalModel();
 		TFunctionModel functionModel = globalModel.lookupByFunctionName(firstFunctionName);
 		
 		

@@ -32,7 +32,7 @@ import org.eclipse.ui.part.EditorPart;
  * @email mwang@talend.com
  * @date Dec 27, 2012
  */
-public class FunctionLocatorEditor extends EditorPart implements PropertyChangeListener{
+public class TCodeLocatorEditor extends EditorPart implements PropertyChangeListener{
 
 	public static final String ID = "marvin.squirrel.tis.locator.editor";
 	
@@ -83,7 +83,7 @@ public class FunctionLocatorEditor extends EditorPart implements PropertyChangeL
 	/**
 	 * 
 	 */
-	public FunctionLocatorEditor() {
+	public TCodeLocatorEditor() {
 	}
 
 	/* (non-Javadoc)
@@ -108,7 +108,7 @@ public class FunctionLocatorEditor extends EditorPart implements PropertyChangeL
 	@Override
 	public void init(IEditorSite site, IEditorInput input)
 			throws PartInitException {
-		if(!(input instanceof FunctionLocatorEditorInput))
+		if(!(input instanceof TCodeLocatorEditorInput))
 			throw new PartInitException("");
 		this.setInput(input);
 		this.setSite(site);
