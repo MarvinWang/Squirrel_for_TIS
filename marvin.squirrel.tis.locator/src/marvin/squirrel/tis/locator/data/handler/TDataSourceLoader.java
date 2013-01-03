@@ -5,13 +5,11 @@ package marvin.squirrel.tis.locator.data.handler;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Iterator;
 
-import marvin.squirrel.tis.locator.TISLocatorPlugin;
-import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.data.model.TClassModel;
 import marvin.squirrel.tis.locator.data.model.TFunctionModel;
+import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.data.model.TVersionInfoModel;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
@@ -20,12 +18,7 @@ import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
-import org.osgi.framework.Bundle;
 
 /**
  * @author Marvin
@@ -49,37 +42,15 @@ public class TDataSourceLoader {
 	/**
 	 * Loads data from data source file to build a global mode <code>GlobalModel</code>. When the viewer is opened, 
 	 * then this method is invoked. If the memory mode is changed, before invoking this method, you should invoke 
-	 * {@link #pushModelToFile()} first.
+	 * {@link TDataSourceWriter#pushModelToFile()} first.
 	 * @return
 	 * @throws IOException If file "DataSource.xml" can not find.
 	 */
-	public TGlobalModel loadData() throws TDataSourceException{
+	public TGlobalModel loadDataFromFile() throws TDataSourceException{
 		globalModel = new TGlobalModel();
-		File datasourceFile = fetchDataSourceFile();
+		File datasourceFile = TDataSourceManager.fetchDataSourceFile();
 		buildGlobalModel(datasourceFile, globalModel);
 		return globalModel;
-	}
-
-	public void pushModelToFile(){}
-	
-	/**
-	 * Fetches the data source file from the current plugin directory.
-	 * @return
-	 * @throws TDataSourceException 
-	 */
-	private File fetchDataSourceFile() throws TDataSourceException {
-		File datasourceFile = null;
-		Bundle bundle = Platform.getBundle(TISLocatorPlugin.PLUGIN_ID);
-		URL datasourceURL = FileLocator.find(bundle, new Path(Messages.getString("DataSourceLoader.datasource.file")), null);
-		
-		try {
-			URL fileURL = FileLocator.toFileURL(datasourceURL);
-			String path = fileURL.getPath();
-			datasourceFile = new File(path);
-		} catch (IOException e) {
-			throw new TDataSourceException(Messages.getString("DataSourceLoader.exception.notfound.sourcefile"),e);
-		}
-		return datasourceFile;
 	}
 	
 	/**
@@ -150,7 +121,7 @@ public class TDataSourceLoader {
 			Document document = reader.read(datasourceFile);
 			return document.getRootElement();
 		} catch (DocumentException e) {
-			throw new TDataSourceException(Messages.getString("DataSourceLoader.exception.notfound.sourcefile"),e);
+			throw new TDataSourceException(Messages.getString("DataSourceLoader.ex.notfound.sourcefile"),e);
 		}
 	}
 	

@@ -5,6 +5,7 @@ package marvin.squirrel.tis.locator.data.handler;
 
 import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.data.model.TFunctionModel;
+import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 
@@ -41,11 +42,17 @@ public class TModelProxyFactory {
 	 * @throws TDataSourceException
 	 */
 	public void initModel() throws TDataSourceException{
-		TDataSourceLoader.getInstance().loadData();
+		TDataSourceLoader.getInstance().loadDataFromFile();
+	}
+	
+	public void saveModel() throws TDataSourceException{
+		TDataSourceWriter.getInstance().pushModelToFile();
 	}
 	
 	public static TFunctionModel newFunctionModel(){
-		return new TFunctionModel(newFunctionName());
+		TFunctionModel functionModel = new TFunctionModel(newFunctionName()); 
+		functionModel.setStatus(TModelStatusEnum.SEPERATE);
+		return functionModel;
 	}
 	
 	/**
@@ -66,5 +73,9 @@ public class TModelProxyFactory {
 	
 	private static String makeUpName(int index){
 		return NEW_FUNCTION_NAME + NEW_FUNCTION_NAME_LEFT_BRACKET + index + NEW_FUNCTION_NAME_RIGHT_BRACKET;
+	}
+	
+	public TGlobalModel getGlobalModel(){
+		return TDataSourceLoader.getInstance().getGlobalModel();
 	}
 }

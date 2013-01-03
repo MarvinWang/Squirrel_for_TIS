@@ -6,7 +6,8 @@ package marvin.squirrel.tis.locator.editors;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import marvin.squirrel.tis.locator.editors.controller.TFunctionEditorController;
+import marvin.squirrel.tis.locator.editors.controller.TCodeEditorController;
+import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -76,7 +77,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	
 	private Combo svnVersionCombo;
 	
-	private TFunctionEditorController controller;
+	private TCodeEditorController controller;
 	
 	private boolean isDirty = false;
 	
@@ -91,7 +92,11 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	 */
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-
+		try {
+			controller.doSave(monitor);
+		} catch (TDataSourceException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/* (non-Javadoc)
@@ -150,7 +155,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		
 		scrolledComposite.setMinSize(basicComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		
-		controller = new TFunctionEditorController(this);
+		controller = new TCodeEditorController(this);
 		regListeners();
 	}
 	
@@ -394,7 +399,6 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	public void propertyChange(PropertyChangeEvent evt) {
 		isDirty = true;
 		this.firePropertyChange(PROP_DIRTY);
-		
 	}
 
 }

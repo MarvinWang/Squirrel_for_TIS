@@ -4,6 +4,7 @@
 package marvin.squirrel.tis.locator.data.model;
 
 import marvin.squirrel.tis.locator.constants.TPropertyForModel;
+import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
 
 /**
  * @author Marvin Wang
@@ -23,16 +24,20 @@ public class TFunctionModel extends TAbstractModel{
 	private TVersionInfoModel versionInfoModel;
 	
 	private String desc;
+	
+	private TModelStatusEnum status = TModelStatusEnum.MERGED;
 
 	/**
 	 * 
 	 */
 	public TFunctionModel() {
 		super();
+		classModel = new TClassModel();
+		versionInfoModel = new TVersionInfoModel();
 	}
 	
 	public TFunctionModel(String name) {
-		super();
+		this();
 		this.name = name;
 	}
 
@@ -102,4 +107,20 @@ public class TFunctionModel extends TAbstractModel{
 	public void setVersionInfoModel(TVersionInfoModel versionInfoModel) {
 		this.versionInfoModel = versionInfoModel;
 	}
+
+	/**
+	 * @return the status
+	 */
+	public TModelStatusEnum getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(TModelStatusEnum status) {
+		this.status = status;
+	}
+	
+	
 }
