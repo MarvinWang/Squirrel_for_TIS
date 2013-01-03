@@ -64,10 +64,11 @@ public class TDataSourceLoader {
 		Iterator<Element> children = root.elementIterator(Messages.getString("DataSource.tag.function"));
 		while(children.hasNext()){
 			Element funcEle = (Element)children.next();
-			Attribute funcEleAttr = funcEle.attribute(Messages.getString("DataSource.tag.function.attr.name"));
+			Attribute funcEleAttrId = funcEle.attribute(Messages.getString("DataSource.tag.function.attr.id"));
+			Attribute funcEleAttrName = funcEle.attribute(Messages.getString("DataSource.tag.function.attr.name"));
 //			If the function name is not empty, then create a function model.
-			if(!"".equals(funcEleAttr.getValue())){
-				TFunctionModel functionModel = new TFunctionModel(funcEleAttr.getValue());
+			if(!"".equals(funcEleAttrName.getValue())){
+				TFunctionModel functionModel = new TFunctionModel(funcEleAttrId.getValue(),funcEleAttrName.getValue());
 				globalModel.addFunctionModel(functionModel);
 				functionModel.setType(funcEle.attributeValue(Messages.getString("DataSource.tag.function.attr.type")));
 				functionModel.setProduct(funcEle.attributeValue(Messages.getString("DataSource.tag.function.attr.product")));

@@ -42,5 +42,10 @@ public class TCodeEditorController {
 		}
 		
 		TModelProxyFactory.getInstance().saveModel();
+		
+	}
+	
+	public boolean checkIfFunctionExist(String functionName){
+		return TModelProxyFactory.isFunctionModelExist(functionName);
 	}
 }

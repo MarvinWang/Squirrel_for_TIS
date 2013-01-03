@@ -8,6 +8,7 @@ import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
+import marvin.squirrel.tis.locator.utils.TUniqueIDCreater;
 
 /**
  * @author Marvin Wang
@@ -50,7 +51,7 @@ public class TModelProxyFactory {
 	}
 	
 	public static TFunctionModel newFunctionModel(){
-		TFunctionModel functionModel = new TFunctionModel(newFunctionName()); 
+		TFunctionModel functionModel = new TFunctionModel(String.valueOf(TUniqueIDCreater.getUniqueID()),newFunctionName()); 
 		functionModel.setStatus(TModelStatusEnum.SEPERATE);
 		return functionModel;
 	}
@@ -77,5 +78,9 @@ public class TModelProxyFactory {
 	
 	public TGlobalModel getGlobalModel(){
 		return TDataSourceLoader.getInstance().getGlobalModel();
+	}
+	
+	public static boolean isFunctionModelExist(String functionName){
+		return TDataSourceLoader.getInstance().getGlobalModel().hasFunctionName(functionName);
 	}
 }

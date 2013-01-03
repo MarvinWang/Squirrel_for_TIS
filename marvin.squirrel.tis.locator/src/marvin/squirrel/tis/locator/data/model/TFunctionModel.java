@@ -13,6 +13,8 @@ import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
  */
 public class TFunctionModel extends TAbstractModel{
 	
+	private String id;
+	
 	private String name;
 	
 	private String type;
@@ -36,8 +38,9 @@ public class TFunctionModel extends TAbstractModel{
 		versionInfoModel = new TVersionInfoModel();
 	}
 	
-	public TFunctionModel(String name) {
+	public TFunctionModel(String id, String name) {
 		this();
+		this.id = id;
 		this.name = name;
 	}
 
@@ -121,6 +124,19 @@ public class TFunctionModel extends TAbstractModel{
 	public void setStatus(TModelStatusEnum status) {
 		this.status = status;
 	}
-	
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 }

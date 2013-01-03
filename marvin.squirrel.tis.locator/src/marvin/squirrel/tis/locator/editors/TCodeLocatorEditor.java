@@ -6,11 +6,13 @@ package marvin.squirrel.tis.locator.editors;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import marvin.squirrel.tis.locator.data.handler.TModelProxyFactory;
 import marvin.squirrel.tis.locator.editors.controller.TCodeEditorController;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
@@ -92,10 +94,18 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	 */
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		try {
-			controller.doSave(monitor);
-		} catch (TDataSourceException e) {
-			e.printStackTrace();
+		String functionName = functionNameTxt.getText();
+		boolean isExist = TModelProxyFactory.isFunctionModelExist(functionName);
+		if(isExist){
+			MessageDialog.openWarning(this.getEditorSite().getShell(), "Warning", "The function named \'" + functionName + " \' is existing!");
+		}else{
+			try {
+				controller.doSave(monitor);
+				isDirty = false;
+				this.firePropertyChange(PROP_DIRTY);
+			} catch (TDataSourceException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
