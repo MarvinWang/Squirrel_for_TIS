@@ -27,6 +27,12 @@ public class TCodeEditorController {
 		input = (TCodeLocatorEditorInput)editor.getEditorInput();
 	}
 	
+	public void init(){
+		TFunctionModel functionModel = input.getFunctionModel();
+		String functionName = functionModel.getName();
+		editor.getFunctionNameTxt().setText(functionName);
+	}
+	
 	public void doFunctionNameChange(){
 		TFunctionModel functionmodel = input.getFunctionModel();
 		String functionName = editor.getFunctionNameTxt().getText();
@@ -46,6 +52,6 @@ public class TCodeEditorController {
 	}
 	
 	public boolean checkIfFunctionExist(String functionName){
-		return TModelProxyFactory.isFunctionModelExist(functionName);
+		return TModelProxyFactory.getInstance().isFunctionModelExist(functionName);
 	}
 }

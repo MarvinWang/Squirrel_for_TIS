@@ -53,7 +53,8 @@ public class TOpenFunctionEditorAction extends Action {
 	}
 
 	public void run() {
-		TFunctionModel functionModel = TModelProxyFactory.newFunctionModel();
+		TFunctionModel functionModel = TModelProxyFactory.getInstance().newFunctionModel();
+		TModelProxyFactory.getInstance().getGlobalModel().addFunctionModel(functionModel);
 		IEditorInput editorInput = new TCodeLocatorEditorInput(functionModel);
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 			.getActivePage();

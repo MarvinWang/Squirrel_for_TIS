@@ -8,8 +8,12 @@ import java.beans.PropertyChangeListener;
 
 import marvin.squirrel.tis.locator.data.handler.TModelProxyFactory;
 import marvin.squirrel.tis.locator.editors.controller.TCodeEditorController;
+import marvin.squirrel.tis.locator.enums.TFunctionTypeEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
+import marvin.squirrel.tis.locator.utils.TFunctionTypeUtils;
+import marvin.squirrel.tis.locator.utils.TProductUtils;
+import marvin.squirrel.tis.locator.utils.TSVNUtils;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -95,7 +99,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		String functionName = functionNameTxt.getText();
-		boolean isExist = TModelProxyFactory.isFunctionModelExist(functionName);
+		boolean isExist = TModelProxyFactory.getInstance().isFunctionModelExist(functionName);
 		if(isExist){
 			MessageDialog.openWarning(this.getEditorSite().getShell(), "Warning", "The function named \'" + functionName + " \' is existing!");
 		}else{
@@ -165,8 +169,9 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		
 		scrolledComposite.setMinSize(basicComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		
-		controller = new TCodeEditorController(this);
 		regListeners();
+		controller = new TCodeEditorController(this);
+		controller.init();
 	}
 	
 	protected void createBasicContents(Composite parent){
@@ -215,6 +220,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		
 		typeCombo = new Combo(basicGroup, SWT.NONE);
 		GridDataFactory.fillDefaults().span(1, 1).grab(true, false).applyTo(typeCombo);
+		typeCombo.setItems(TFunctionTypeUtils.fetchAllDisplayNames());
 		
 		productLbl = new Label(basicGroup, SWT.NONE);
 		productLbl.setText(Messages.getString("FunctionLocatorEditor.lbl.product"));
@@ -222,6 +228,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		
 		productCombo = new Combo(basicGroup, SWT.NONE);
 		GridDataFactory.fillDefaults().span(1, 1).grab(true, false).applyTo(productCombo);
+		productCombo.setItems(TProductUtils.fetchAllProducts());
 		
 //		Description widgets
 		descriptionLbl = new Label(basicGroup, SWT.NONE);
@@ -245,6 +252,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		
 		repositoryCombo = new Combo(svnGroup, SWT.NONE);
 		GridDataFactory.fillDefaults().span(1, 1).grab(true, false).applyTo(repositoryCombo);
+		repositoryCombo.setItems(TSVNUtils.fetchAllRepository());
 		
 //		SVN Version
 		svnVersionLbl = new Label(svnGroup, SWT.NONE); 
@@ -253,6 +261,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		
 		svnVersionCombo = new Combo(svnGroup, SWT.NONE);
 		GridDataFactory.fillDefaults().span(1, 1).grab(true, false).applyTo(svnVersionCombo);
+		svnVersionCombo.setItems(TSVNUtils.fetchAllSVNVersions());
 	}
 	
 	protected void regListeners(){

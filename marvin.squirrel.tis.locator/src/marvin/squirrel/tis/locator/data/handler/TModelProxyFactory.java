@@ -50,7 +50,7 @@ public class TModelProxyFactory {
 		TDataSourceWriter.getInstance().pushModelToFile();
 	}
 	
-	public static TFunctionModel newFunctionModel(){
+	public TFunctionModel newFunctionModel(){
 		TFunctionModel functionModel = new TFunctionModel(String.valueOf(TUniqueIDCreater.getUniqueID()),newFunctionName()); 
 		functionModel.setStatus(TModelStatusEnum.SEPERATE);
 		return functionModel;
@@ -60,7 +60,7 @@ public class TModelProxyFactory {
 	 * Creates a new function name like the format <code>New Function('index')</code>.
 	 * @return
 	 */
-	public static String newFunctionName(){
+	public String newFunctionName(){
 		
 		String newName = makeUpName(index);
 		TGlobalModel globalModel = TDataSourceLoader.getInstance().getGlobalModel();
@@ -72,7 +72,7 @@ public class TModelProxyFactory {
 		return newName;
 	}
 	
-	private static String makeUpName(int index){
+	private String makeUpName(int index){
 		return NEW_FUNCTION_NAME + NEW_FUNCTION_NAME_LEFT_BRACKET + index + NEW_FUNCTION_NAME_RIGHT_BRACKET;
 	}
 	
@@ -80,7 +80,7 @@ public class TModelProxyFactory {
 		return TDataSourceLoader.getInstance().getGlobalModel();
 	}
 	
-	public static boolean isFunctionModelExist(String functionName){
+	public boolean isFunctionModelExist(String functionName){
 		return TDataSourceLoader.getInstance().getGlobalModel().hasFunctionName(functionName);
 	}
 }
