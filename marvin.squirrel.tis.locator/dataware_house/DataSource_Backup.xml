@@ -1,0 +1,223 @@
+<global>
+<!-- Product should be "DI", "DQ", "MDM", "ESB" and etc.. -->
+<!--Version info includes Branch_4.2, Branch_5.0, Branch5.1, Branch5.2 and Trunk. 
+Later, if any other versions is released, it needs to add here. Default value is All. -->
+
+<!-- ######################################################-->
+<!-- Type:
+    For Repository: "REP_Job", "REP_Context", "REP_DBConnection", "REP_View"
+    For Design: "DES_Job" 
+    For Login Dialog:
+	For Component: "COMP"
+-->
+  <function name="Retrieve Schema for displaying tables" type="" product="DI">
+     <classInfo name="SelectorTreeViewerProvider.java">
+	    <package>org.talend.repository.ui.wizards.metadata.table.database</package>
+		<plugin>org.talend.repository.metadata</plugin>
+		<method>getChildren(Object)</method>
+	 </classInfo>
+	 <desc>In retrieve schema wizard, when you are in the second wizard page, you click the + to expand the database tree to display all tables.</desc>
+	 <versionInfo url="tos">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+
+  <function name="Retrieve Schema for right-clicking" type="" product="DI">
+     <classInfo name="AbstractCreateTableAction.java">
+	    <package>org.talend.repository.metadata</package>
+		<plugin>org.talend.repository.metadata</plugin>
+		<method>openDatabaseTableWizard(dbConnItem,metadataTable,forceReadOnly,repNode,creation)</method>
+	 </classInfo>
+	 <desc>When you right-click a db connection, select "Retrieve Schema", it will triger this action.</desc>
+	 <versionInfo url="tos">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+  
+  <function name="Check for DB wizard" type="" product="">
+     <classInfo name="DatabaseForm.java">
+	    <package>org.talend.repository.metadata</package>
+		<plugin>org.talend.repository.metadata</plugin>
+		<method>checkConnection()</method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="tos">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+  <function name="Finish on Context Group of Repository" type="REP_Context" product="DI">
+     <classInfo name="ContextWizard.java">
+	    <package>org.talend.repository.ui.wizards.context</package>
+		<plugin>org.talend.metadata.managment.ui</plugin>
+		<method>boolean performFinish()</method>
+	 </classInfo>
+	 <versionInfo url="">
+		<version>All</version>
+	 </versionInfo>
+	 <desc></desc>
+  </function>
+  <function name="Finish on DB connection wizard" type="" product="DI">
+     <classInfo name="DatabaseWizard.java">
+	    <package>org.talend.repository.ui.wizards.metadata.connection.database</package>
+		<plugin>org.talend.repository.metadata</plugin>
+		<method>boolean performFinish()</method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+  <function name="Choose a remote connection" type="" product="DI">
+     <classInfo name="">
+	    <package></package>
+		<plugin></plugin>
+		<method></method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+  
+    <function name="Run a job" type="" product="DI">
+     <classInfo name="ProcessComposite.java">
+	    <package>org.talend.designer.runprocess.ui</package>
+		<plugin>org.talend.designer.runprocess</plugin>
+		<method>execButtonPressed()</method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+
+    <function name="Data Viewer" type="" product="DI">
+     <classInfo name="ViewDataSchemaAction.java">
+	    <package>org.talend.designer.component.preview</package>
+		<plugin>org.talend.designer.component.preview</plugin>
+		<method>void doRun()</method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="tos">
+		<version>All</version>
+	 </versionInfo>
+  </function>  
+  
+    <function name="Run a remote job" type="" product="DI">
+     <classInfo name="RunRemoteProcessContext.java">
+	    <package>org.talend.designer.runprocess.remote</package>
+		<plugin>org.talend.designer.runprocess.remote</plugin>
+		<method>exe(Shell)</method>
+	 </classInfo>
+	 <desc>In the RUN job view, select a remote job server you defined in preference, then clieck "RUN" button.</desc>
+	 <versionInfo url="">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+
+    <function name="Get context parameters for command line" type="" product="DI">
+     <classInfo name="JobScriptsManager.java">
+	    <package>org.talend.repository.ui.wizards.exportjob.scriptsmanager</package>
+		<plugin>org.talend.repository</plugin>
+		<method>String getSettingContextParametersValue()</method>
+	 </classInfo>
+	 <desc>When run a job in a remote job server, it will first generate the "context_para" parameters.</desc>
+	 <versionInfo url="">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+  
+    <function name="Branch Management" type="REP_View" product="DI">
+     <classInfo name="SwitchBranchAction.java">
+	    <package>org.talend.repository.svnprovider.actions</package>
+		<plugin>org.talend.repository.svnprovider</plugin>
+		<method>run()</method>
+	 </classInfo>
+	 <desc>This is an action for switch management, there is a button in repository view when the current is remote project.</desc>
+	 <versionInfo>
+		<version url="">All</version>
+	 </versionInfo>
+  </function>
+
+    <function name="Create launcher file for remote job server" type="REP_View" product="DI">
+     <classInfo name="JobScriptsManager.java">
+	    <package>org.talend.repository.ui.wizards.exportjob.scriptsmanager</package>
+		<plugin>org.talend.repository</plugin>
+		<method>getLauncher(args...)</method>
+	 </classInfo>
+	 <desc>This method will create a file named *.sh or *.bat for a job that runs in a remote job server.</desc>
+	 <versionInfo url="">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+  
+  <function name="Remote Preference" type="" product="DI">
+     <classInfo name="">
+	    <package></package>
+		<plugin></plugin>
+		<method></method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="tis_shared">
+		<version>All</version>
+	 </versionInfo>
+  </function>  
+  
+  <function name="Rename Action" type="REP_View" product="DI">
+     <classInfo name="RenameFolderAction.java">
+	    <package>org.talend.repository.ui.actions</package>
+		<plugin>org.talend.core.repository</plugin>
+		<method>doRun()</method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="tos">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+
+  <function name="Linker from table to Tree" type="COMP" product="DI">
+     <classInfo name="TableToTreeLinker.java">
+	    <package>org.talend.commons.ui.swt.linking</package>
+		<plugin>org.talend.commons.ui</plugin>
+		<method>drawBackfround(GC)</method>
+	 </classInfo>
+	 <desc>Some component like tFileOutputMSXML, it needs a linker from schema. First, create a job and drag "tLogRow" and "tFileOutputMSXML" into job, then add schemas for tLogRow and make a line between the two components. Then double click "tFileOutputMSXML", and make a line from left table to right tree.</desc>
+	 <versionInfo url="tos">
+		<version>All</version>
+	 </versionInfo>
+  </function>
+  <function name="Query Text in Component View" type="" product="DI">
+     <classInfo name="SqlMemoController.java">
+	    <package>org.talend.designer.core.ui.editor.properties.controllers</package>
+		<plugin>org.talend.designer.core</plugin>
+		<method>createControl()</method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="tos">
+		<version>All</version>
+	 </versionInfo>
+  </function> 
+  <function name="Check out a revision of job" type="" product="DI">
+     <classInfo name="CheckoutAction.java">
+	    <package>org.talend.repository.svnprovider.ui.history</package>
+		<plugin>org.talend.repository.svnprovider</plugin>
+		<method>run()</method>
+	 </classInfo>
+	 <desc>This action is from SVN History in Job View, when right-clicking the revision, then select "check out", it will be triggered.</desc>
+	 <versionInfo url="tis_shared">
+		<version>All</version>
+	 </versionInfo>
+  </function> 
+  
+    <function name="tMap Component: edit columns for output table" type="" product="DI">
+     <classInfo name="">
+	    <package></package>
+		<plugin></plugin>
+		<method></method>
+	 </classInfo>
+	 <desc></desc>
+	 <versionInfo url="tis_shared">
+		<version>All</version>
+	 </versionInfo>
+	</function>
+</global>

@@ -1,0 +1,33 @@
+***********************************************
+**                                           **
+**        MEMO for Development               **
+**                                           **
+***********************************************
+
+#Before#
+1. Finish a view for Code Locator.
+2. Finish an editor for Code Locator.
+
+#Jan. 2, 2012#
+1. Make editor dirty when "Function Name" is changed.
+2. Save models to a template file named "DataSource_tmp.xml".
+3. Add "id" for every function element.
+
+#Jan. 3, 2012#
+1. Add new function model to global model when clicking "+" in view.[Done]
+2. If "Function Name" is empty, "Save" is unable. It will pop-up a dialog.[Uncompleted]
+3. Initialize the values for editor(It can be used by opening a new editor or editing an existing function).[Uncompleted]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
