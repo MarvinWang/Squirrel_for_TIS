@@ -18,6 +18,9 @@
 2. If "Function Name" is empty, "Save" is unable. It will pop-up a dialog.[Uncompleted]
 3. Initialize the values for editor(It can be used by opening a new editor or editing an existing function).[Uncompleted]
 
+#Jan. 4, 2012#
+1. Continue to complete "editor initialization".[Only repository and svn version left]
+
 
 
 

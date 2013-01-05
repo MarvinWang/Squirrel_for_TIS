@@ -23,4 +23,26 @@ public class TProductUtils {
 		}
 		return products.toArray(new String[products.size()]);
 	}
+	
+	public static TProductsEnum getProduct(String productName){
+		TProductsEnum[] all = TProductsEnum.values();
+		for(TProductsEnum product : all){
+			if(product.getName().equals(product)){
+				return product;
+			}
+		}
+		return null;
+	}
+	
+	public static int indexProduct(TProductsEnum product){
+		TProductsEnum[] all = TProductsEnum.values();
+		int index = -1;
+		for(TProductsEnum tmp : all){
+			++index;
+			if(tmp.equals(product)){
+				return index;
+			}
+		}
+		return -1;
+	}
 }

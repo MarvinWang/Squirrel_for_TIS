@@ -16,7 +16,6 @@ import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.data.model.TVersionInfoModel;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
-import marvin.squirrel.tis.locator.utils.TUniqueIDCreater;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -104,8 +103,8 @@ public class TDataSourceWriter {
 	protected void buildFunctionElement(Element functionElement, TFunctionModel funcModel){
 		functionElement.addAttribute(Messages.getString("DataSource.tag.function.attr.id"), funcModel.getId());
 		functionElement.addAttribute(Messages.getString("DataSource.tag.function.attr.name"), funcModel.getName());
-		functionElement.addAttribute(Messages.getString("DataSource.tag.function.attr.type"), funcModel.getType());
-		functionElement.addAttribute(Messages.getString("DataSource.tag.function.attr.product"), funcModel.getProduct());
+		functionElement.addAttribute(Messages.getString("DataSource.tag.function.attr.type"), funcModel.getType().getDisplayName());
+		functionElement.addAttribute(Messages.getString("DataSource.tag.function.attr.product"), funcModel.getProduct().getName());
 	}
 	
 	protected void buildClassInfoElement(Element classInfoElement, TClassModel classModel){

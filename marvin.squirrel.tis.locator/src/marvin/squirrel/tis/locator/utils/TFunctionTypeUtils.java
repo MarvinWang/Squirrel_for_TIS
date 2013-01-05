@@ -27,4 +27,31 @@ public class TFunctionTypeUtils {
 		}
 		return all.toArray(new String[all.size()]);
 	}
+	
+	/**
+	 * 
+	 * @param displayType
+	 * @return
+	 */
+	public static TFunctionTypeEnum getFunctionType(String displayType){
+		TFunctionTypeEnum[] allTypes = TFunctionTypeEnum.values();
+		for(TFunctionTypeEnum type : allTypes){
+			if(type.getDisplayName().equals(displayType)){
+				return type;
+			}
+		}
+		return null;
+	}
+	
+	public static int indexFunctionType(TFunctionTypeEnum functionType){
+		TFunctionTypeEnum[] allTypes = TFunctionTypeEnum.values();
+		int index = -1;
+		for(TFunctionTypeEnum type : allTypes){
+			++index;
+			if(type.equals(functionType)){
+				return index;
+			}
+		}
+		return -1;
+	}
 }

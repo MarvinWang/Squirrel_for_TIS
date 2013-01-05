@@ -36,5 +36,14 @@ public enum TProductsEnum {
 		return fullName;
 	}
 	
+	public  boolean equals(TProductsEnum product){
+		if(product  == null)
+			return false;
+		if(this.getName().equals(product.getName()) &&
+				this.getFullName().equals(product.getFullName())){
+			return true;
+		}
+		return false;
+	}
 	
 }

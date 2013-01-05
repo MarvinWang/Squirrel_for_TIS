@@ -70,5 +70,15 @@ public enum TFunctionTypeEnum {
 		this.desc = desc;
 	}
 	
+	public boolean equals(TFunctionTypeEnum functionType){
+		if(functionType == null)
+			return false;
+		if(this.getName().equals(functionType.getName()) &&
+				this.getDisplayName().equals(functionType.getDisplayName()) &&
+				this.getDesc().equals(functionType.getDesc())){
+			return true;
+		}
+		return false;
+	}
 	
 }

@@ -4,7 +4,9 @@
 package marvin.squirrel.tis.locator.data.model;
 
 import marvin.squirrel.tis.locator.constants.TPropertyForModel;
+import marvin.squirrel.tis.locator.enums.TFunctionTypeEnum;
 import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
+import marvin.squirrel.tis.locator.enums.TProductsEnum;
 
 /**
  * @author Marvin Wang
@@ -17,9 +19,9 @@ public class TFunctionModel extends TAbstractModel{
 	
 	private String name;
 	
-	private String type;
+	private TFunctionTypeEnum type;
 	
-	private String product;
+	private TProductsEnum product;
 	
 	private TClassModel classModel;
 	
@@ -43,22 +45,6 @@ public class TFunctionModel extends TAbstractModel{
 		this.id = id;
 		this.name = name;
 	}
-
-	public String getRepository(){
-		return versionInfoModel.getSvnDir();
-	}
-	
-	public String getPluginName(){
-		return classModel.getPluginName();
-	}
-	
-	public String getMethodName(){
-		return classModel.getMethod();
-	}
-	
-	public String getClassName(){
-		return classModel.getClassName();
-	}
 	
 	public String getName() {
 		return name;
@@ -71,19 +57,19 @@ public class TFunctionModel extends TAbstractModel{
 		}
 	}
 
-	public String getType() {
+	public TFunctionTypeEnum getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(TFunctionTypeEnum type) {
 		this.type = type;
 	}
 
-	public String getProduct() {
+	public TProductsEnum getProduct() {
 		return product;
 	}
 
-	public void setProduct(String product) {
+	public void setProduct(TProductsEnum product) {
 		this.product = product;
 	}
 

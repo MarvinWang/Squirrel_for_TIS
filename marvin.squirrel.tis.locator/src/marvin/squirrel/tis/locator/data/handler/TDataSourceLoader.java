@@ -13,6 +13,8 @@ import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.data.model.TVersionInfoModel;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
+import marvin.squirrel.tis.locator.utils.TFunctionTypeUtils;
+import marvin.squirrel.tis.locator.utils.TProductUtils;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -70,8 +72,10 @@ public class TDataSourceLoader {
 			if(!"".equals(funcEleAttrName.getValue())){
 				TFunctionModel functionModel = new TFunctionModel(funcEleAttrId.getValue(),funcEleAttrName.getValue());
 				globalModel.addFunctionModel(functionModel);
-				functionModel.setType(funcEle.attributeValue(Messages.getString("DataSource.tag.function.attr.type")));
-				functionModel.setProduct(funcEle.attributeValue(Messages.getString("DataSource.tag.function.attr.product")));
+				String displayType = funcEle.attributeValue(Messages.getString("DataSource.tag.function.attr.type"));
+				functionModel.setType(TFunctionTypeUtils.getFunctionType(displayType));
+				String displayProduct = funcEle.attributeValue(Messages.getString("DataSource.tag.function.attr.product"));
+				functionModel.setProduct(TProductUtils.getProduct(displayProduct));
 				
 //				Build class info model
 				buildClassInfoModel(funcEle, functionModel);

@@ -54,10 +54,10 @@ public class TCodeLocatorController {
 		TFunctionModel functionModel = globalModel.lookupByFunctionName(firstFunctionName);
 		
 		
-		view.getPluginTxt().setText(functionModel.getPluginName());
-		view.getClassNameTxt().setText(functionModel.getClassName());
-		view.getMethodTxt().setText(functionModel.getMethodName());
+		view.getPluginTxt().setText(functionModel.getClassModel().getPluginName());
+		view.getClassNameTxt().setText(functionModel.getClassModel().getClassName());
+		view.getMethodTxt().setText(functionModel.getClassModel().getMethod());
 		view.getDescText().setText(functionModel.getDesc());
-		view.getRepositoryTxt().setText(functionModel.getRepository());
+		view.getRepositoryTxt().setText(functionModel.getVersionInfoModel().getSvnDir());
 	}
 }
