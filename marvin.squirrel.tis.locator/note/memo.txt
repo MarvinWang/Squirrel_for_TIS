@@ -21,6 +21,11 @@
 #Jan. 4, 2012#
 1. Continue to complete "editor initialization".[Only repository and svn version left]
 
+#Jan. 5, 2012#
+1. Change to enum for attributes in TVersionInfoModel.java.[Done]
+2. Add tool tips for editor using function name.[Done]
+3. Continue to complete "editor initialization"[Only for SVNs, done].
+
 
 
 

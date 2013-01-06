@@ -3,6 +3,9 @@
  */
 package marvin.squirrel.tis.locator.data.model;
 
+import marvin.squirrel.tis.locator.enums.TSVNSourceEnum;
+import marvin.squirrel.tis.locator.enums.TSVNVersionEnum;
+
 
 /**
  * @author Marvin Wang
@@ -11,25 +14,25 @@ package marvin.squirrel.tis.locator.data.model;
  */
 public class TVersionInfoModel {
 
-	private String svnDir;
+	private TSVNSourceEnum svnDir;
 	
-	private String version;
+	private TSVNVersionEnum version;
 	
 	public TVersionInfoModel(){}
 
-	public String getSvnDir() {
+	public TSVNSourceEnum getSvnDir() {
 		return svnDir;
 	}
 
-	public void setSvnDir(String svnDir) {
+	public void setSvnDir(TSVNSourceEnum svnDir) {
 		this.svnDir = svnDir;
 	}
 
-	public String getVersion() {
+	public TSVNVersionEnum getVersion() {
 		return version;
 	}
 
-	public void setVersion(String version) {
+	public void setVersion(TSVNVersionEnum version) {
 		this.version = version;
 	}
 

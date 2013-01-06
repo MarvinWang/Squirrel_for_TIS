@@ -17,13 +17,14 @@ public enum TSVNVersionEnum {
 	VERSION_B5_2_UP("VERSION_B5_2_UP","Branch5.2_upper",""),
 	VERSION_TRUNK("VERSION_TRUNK","Trunk","");
 	
-	private String name;
+	private String name;//That is stored in DataSource.xml
 	
-	private String version;
+	private String version;//The display version in UI.
 	
 	private String desc;
 	
 	TSVNVersionEnum(String name, String version, String desc){
+		this.name = name;
 		this.version = version;
 		this.desc = desc;
 	}
@@ -70,5 +71,15 @@ public enum TSVNVersionEnum {
 		this.desc = desc;
 	}
 	
-	
+	public boolean equals(TSVNVersionEnum svnVersion){
+		if(svnVersion == null){
+			return false;
+		}
+		if(this.name.equals(svnVersion.getName()) && 
+				this.getVersion().equals(svnVersion.getVersion() )&&
+						this.getDesc().equals(svnVersion.getDesc())){
+			return true;
+		}
+		return false;
+	}
 }

@@ -58,6 +58,6 @@ public class TCodeLocatorController {
 		view.getClassNameTxt().setText(functionModel.getClassModel().getClassName());
 		view.getMethodTxt().setText(functionModel.getClassModel().getMethod());
 		view.getDescText().setText(functionModel.getDesc());
-		view.getRepositoryTxt().setText(functionModel.getVersionInfoModel().getSvnDir());
+//		view.getRepositoryTxt().setText(functionModel.getVersionInfoModel().getSvnDir().getName());
 	}
 }

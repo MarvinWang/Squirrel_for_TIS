@@ -8,6 +8,7 @@ import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
+import marvin.squirrel.tis.locator.utils.TStringUtils;
 import marvin.squirrel.tis.locator.utils.TUniqueIDCreater;
 
 /**
@@ -16,12 +17,6 @@ import marvin.squirrel.tis.locator.utils.TUniqueIDCreater;
  * @email mwang@talend.com
  */
 public class TModelProxyFactory {
-	
-	public static final String NEW_FUNCTION_NAME = Messages.getString("FunctionLocatorEditor.title.newFunction");
-	
-	public static final String NEW_FUNCTION_NAME_LEFT_BRACKET = Messages.getString("FunctionLocatorEditor.title.newFunction.leftBracket");
-	
-	public static final String NEW_FUNCTION_NAME_RIGHT_BRACKET = Messages.getString("FunctionLocatorEditor.title.newFunction.rightBracket");
 	
 	private static int index = 1;
 
@@ -73,7 +68,7 @@ public class TModelProxyFactory {
 	}
 	
 	private String makeUpName(int index){
-		return NEW_FUNCTION_NAME + NEW_FUNCTION_NAME_LEFT_BRACKET + index + NEW_FUNCTION_NAME_RIGHT_BRACKET;
+		return TStringUtils.getNewFunctionNameStartWith() + index + TStringUtils.getNewFunctionNameEndWith();
 	}
 	
 	public TGlobalModel getGlobalModel(){

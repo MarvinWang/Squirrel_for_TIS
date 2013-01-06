@@ -119,8 +119,8 @@ public class TDataSourceWriter {
 	
 
 	protected void buildVersionInfoElement(Element versionInfoElement, TVersionInfoModel versionInfoModel){
-		versionInfoElement.addAttribute(Messages.getString("DataSource.tag.function.versionInfo.attr.url"), versionInfoModel.getSvnDir());
+		versionInfoElement.addAttribute(Messages.getString("DataSource.tag.function.versionInfo.attr.url"), versionInfoModel.getSvnDir().getName());
 		Element versionElement = versionInfoElement.addElement(Messages.getString("DataSource.tag.function.versionInfo.version"));
-		versionElement.addText(versionInfoModel.getVersion() == null ? "" : versionInfoModel.getVersion());
+		versionElement.addText(versionInfoModel.getVersion() == null ? "" : versionInfoModel.getVersion().getVersion());
 	}
 }

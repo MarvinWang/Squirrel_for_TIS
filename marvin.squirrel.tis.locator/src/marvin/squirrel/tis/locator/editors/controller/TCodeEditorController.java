@@ -12,9 +12,12 @@ import marvin.squirrel.tis.locator.editors.TCodeLocatorEditorInput;
 import marvin.squirrel.tis.locator.enums.TFunctionTypeEnum;
 import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
 import marvin.squirrel.tis.locator.enums.TProductsEnum;
+import marvin.squirrel.tis.locator.enums.TSVNSourceEnum;
+import marvin.squirrel.tis.locator.enums.TSVNVersionEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.utils.TFunctionTypeUtils;
 import marvin.squirrel.tis.locator.utils.TProductUtils;
+import marvin.squirrel.tis.locator.utils.TSVNUtils;
 
 /**
  * @author Marvin Wang
@@ -62,9 +65,12 @@ public class TCodeEditorController {
 		editor.getDescriptionTxt().setText(desc ==  null ? "" : desc);
 		
 //		Repository
-		
+		TSVNSourceEnum svnSource = functionModel.getVersionInfoModel().getSvnDir();
+		editor.getRepositoryCombo().select(TSVNUtils.indexSVNSource(svnSource));
 		
 //		SVN Version
+		TSVNVersionEnum svnVersion = functionModel.getVersionInfoModel().getVersion();
+		editor.getSvnVersionCombo().select(TSVNUtils.indexSVNVersion(svnVersion));
 		
 	}
 	

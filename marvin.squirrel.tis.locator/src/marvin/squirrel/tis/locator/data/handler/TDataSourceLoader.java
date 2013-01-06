@@ -15,6 +15,7 @@ import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.utils.TFunctionTypeUtils;
 import marvin.squirrel.tis.locator.utils.TProductUtils;
+import marvin.squirrel.tis.locator.utils.TSVNUtils;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -109,9 +110,9 @@ public class TDataSourceLoader {
 		TVersionInfoModel versionInfoModel = new TVersionInfoModel();
 		functionModel.setVersionInfoModel(versionInfoModel);
 		String urlValue = versionInfoEle.attributeValue(Messages.getString("DataSource.tag.function.versionInfo.attr.url"));
-		versionInfoModel.setSvnDir(urlValue);
+		versionInfoModel.setSvnDir(TSVNUtils.getSVNSource(urlValue));
 		Element versionEle = versionInfoEle.element(Messages.getString("DataSource.tag.function.versionInfo.version"));
-		versionInfoModel.setVersion(versionEle.getText());
+		versionInfoModel.setVersion(TSVNUtils.getSVNVersion(versionEle.getText()));
 	}
 	
 	/**

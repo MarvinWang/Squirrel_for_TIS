@@ -6,7 +6,9 @@ package marvin.squirrel.tis.locator.editors;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import marvin.squirrel.tis.locator.constants.TPropertyForModel;
 import marvin.squirrel.tis.locator.data.handler.TModelProxyFactory;
+import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.editors.controller.TCodeEditorController;
 import marvin.squirrel.tis.locator.enums.TFunctionTypeEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
@@ -14,6 +16,7 @@ import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.utils.TFunctionTypeUtils;
 import marvin.squirrel.tis.locator.utils.TProductUtils;
 import marvin.squirrel.tis.locator.utils.TSVNUtils;
+import marvin.squirrel.tis.locator.utils.TStringUtils;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -418,6 +421,11 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	public void propertyChange(PropertyChangeEvent evt) {
 		isDirty = true;
 		this.firePropertyChange(PROP_DIRTY);
+		if(TPropertyForModel.FUNCTION_NAME.equals(evt.getPropertyName())){
+			String functionName = (String)evt.getNewValue();
+//			this.setPartName(TStringUtils.makePartNameShort(functionName));
+			this.setTitleToolTip(functionName);
+		}
 	}
 
 }

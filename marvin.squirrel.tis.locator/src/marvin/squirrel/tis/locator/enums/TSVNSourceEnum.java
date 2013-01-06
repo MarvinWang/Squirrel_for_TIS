@@ -16,7 +16,7 @@ public enum TSVNSourceEnum {
 	TSVN_SOURCE_TDQ("tdq","www.talendforge.org/svn/tdq"),
 	TSVN_SOURCE_COMMON("common","www.talendforge.org/svn/common");
 	
-	private String name;
+	private String name;//Display name and stored in DataSource.xml
 	
 	private String path;
 	
@@ -37,6 +37,20 @@ public enum TSVNSourceEnum {
 	 */
 	public String getPath() {
 		return path;
+	}
+	
+	/**
+	 * 
+	 * @param svnSource
+	 * @return
+	 */
+	public boolean equals(TSVNSourceEnum svnSource){
+		if(svnSource == null)
+			return false;
+		if(this.name().equals(svnSource.getName()) && this.path.equals(svnSource.getPath())){
+			return true;
+		}
+		return false;
 	}
 	
 }
