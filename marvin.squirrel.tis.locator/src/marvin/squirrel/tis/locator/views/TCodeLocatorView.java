@@ -4,7 +4,6 @@
 package marvin.squirrel.tis.locator.views;
 
 import marvin.squirrel.tis.locator.actions.TOpenFunctionEditorAction;
-import marvin.squirrel.tis.locator.data.handler.TDataSourceLoader;
 import marvin.squirrel.tis.locator.data.handler.TModelProxyFactory;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
@@ -25,6 +24,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
@@ -157,6 +158,14 @@ public class TCodeLocatorView extends ViewPart {
 		
 		functionNameList = new List(parent, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.MULTI);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(functionNameList);
+		
+		createMenuForFunctionNameList();
+	}
+	
+	protected void createMenuForFunctionNameList(){
+		Menu functionNameListMenu = new Menu(this.getViewSite().getShell(), SWT.POP_UP);
+		MenuItem editMenu = new MenuItem(functionNameListMenu, SWT.PUSH);
+		editMenu.setText("Edit");
 	}
 	
 	/**
