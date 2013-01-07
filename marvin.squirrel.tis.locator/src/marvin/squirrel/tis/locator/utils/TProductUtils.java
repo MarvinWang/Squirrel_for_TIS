@@ -43,6 +43,6 @@ public class TProductUtils {
 				return index;
 			}
 		}
-		return -1;
+		return 0;
 	}
 }

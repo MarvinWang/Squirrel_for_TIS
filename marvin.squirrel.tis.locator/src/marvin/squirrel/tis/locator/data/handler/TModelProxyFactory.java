@@ -3,11 +3,12 @@
  */
 package marvin.squirrel.tis.locator.data.handler;
 
-import marvin.squirrel.tis.locator.data.model.TGlobalModel;
+import java.util.List;
+
 import marvin.squirrel.tis.locator.data.model.TFunctionModel;
+import marvin.squirrel.tis.locator.data.model.TGlobalModel;
 import marvin.squirrel.tis.locator.enums.TModelStatusEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
-import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.utils.TStringUtils;
 import marvin.squirrel.tis.locator.utils.TUniqueIDCreater;
 
@@ -75,7 +76,33 @@ public class TModelProxyFactory {
 		return TDataSourceLoader.getInstance().getGlobalModel();
 	}
 	
+	/**
+	 * 
+	 * @param functionName
+	 * @return
+	 * @deprecated
+	 */
 	public boolean isFunctionModelExist(String functionName){
 		return TDataSourceLoader.getInstance().getGlobalModel().hasFunctionName(functionName);
+	}
+	
+	public boolean isMoreFunctionModelExist(String functionId, String functionName){
+		return TDataSourceLoader.getInstance().getGlobalModel().hasSameFunctionName(functionId, functionName);
+	}
+	
+	/**
+	 * Gets function model by function name.
+	 * @param functionName
+	 * @return
+	 */
+	public TFunctionModel getFunctionModelByName(String functionName){
+		List<TFunctionModel> functionModels = getGlobalModel().getFunctionModels();
+		if(functionModels.size() > 0){
+			for(TFunctionModel model : functionModels){
+				if(model.getName().equals(functionName))
+					return model;
+			}
+		}
+		return null;
 	}
 }

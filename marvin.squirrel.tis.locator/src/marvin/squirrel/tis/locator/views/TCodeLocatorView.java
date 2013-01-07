@@ -22,11 +22,13 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -72,7 +74,9 @@ public class TCodeLocatorView extends ViewPart {
 	
 	private Text repositoryTxt;//Repository Text
 	
-	private Action openFunctionEditorAction;
+	private Menu mainMenu;
+	
+	private MenuItem editMenuItem;
 	
 	
 	/**
@@ -86,6 +90,7 @@ public class TCodeLocatorView extends ViewPart {
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
+		mainMenu = new Menu(this.getViewSite().getShell(), SWT.POP_UP);
 		parent.setLayout(new GridLayout(2,false));
 		
 //		The above composite.
@@ -110,11 +115,13 @@ public class TCodeLocatorView extends ViewPart {
 		
 		createMainRightContents(mainRightComp);
 		
+		createMenuItemsForMainMenu();
+		
+//		Register all listeners for common widgets except menu items.
 		regListeners();
 		loadData();
 		initController();
 		
-		makeActions();
 		contributeToActionBars();
 	}
 	
@@ -159,13 +166,7 @@ public class TCodeLocatorView extends ViewPart {
 		functionNameList = new List(parent, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.MULTI);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(functionNameList);
 		
-		createMenuForFunctionNameList();
-	}
-	
-	protected void createMenuForFunctionNameList(){
-		Menu functionNameListMenu = new Menu(this.getViewSite().getShell(), SWT.POP_UP);
-		MenuItem editMenu = new MenuItem(functionNameListMenu, SWT.PUSH);
-		editMenu.setText("Edit");
+		functionNameList.setMenu(mainMenu);
 	}
 	
 	/**
@@ -211,12 +212,41 @@ public class TCodeLocatorView extends ViewPart {
 	}
 
 	/**
+	 * Creates all menu items for main menu.
+	 */
+	protected void createMenuItemsForMainMenu(){
+		createEditMenuItem();
+	}
+	
+	/**
+	 * Creates the menu of "Edit" for the given widget.
+	 * @param widget
+	 */
+	protected void createEditMenuItem(){
+		editMenuItem = new MenuItem(mainMenu, SWT.PUSH);
+		editMenuItem.setText(Messages.getString("TCodeLocatorView.menu.item.edit"));
+	}
+	
+	protected void regMenuItemListeners(){
+		regEditMenuItemListener();
+	}
+	
+	protected void regEditMenuItemListener(){
+		editMenuItem.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e) {
+				controller.doEditMenuItemSelect();
+			}
+		});
+	}
+	
+	/**
 	 * Registers all listeners for widgets required.
 	 */
 	protected void regListeners(){
 		regLocateBtnListener();
 		regKeyWordTxtListener();
 		regFunctionNameListListener();
+		regMenuItemListeners();
 	}
 	
 	/**
@@ -262,21 +292,8 @@ public class TCodeLocatorView extends ViewPart {
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(openFunctionEditorAction);
+		manager.add(controller.getOpenFunctionEditorAction());
 //		manager.add(new Separator());
-	}
-	
-	protected void makeActions(){
-		makeAddFunctionAction();
-	}
-	
-	/**
-	 * 
-	 */
-	private void makeAddFunctionAction(){
-		openFunctionEditorAction = new TOpenFunctionEditorAction(Messages.getString("TCodeLocatorView.action.openFunctionEditor.text")
-				, PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
-		openFunctionEditorAction.setToolTipText(Messages.getString("TCodeLocatorView.action.openFunctionEditor.tooltip"));
 	}
 	
 	/* (non-Javadoc)

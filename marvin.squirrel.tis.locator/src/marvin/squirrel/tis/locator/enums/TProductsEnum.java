@@ -10,6 +10,7 @@ package marvin.squirrel.tis.locator.enums;
  */
 public enum TProductsEnum {
 
+	TALEND_UNIDENTIFIED("UNIDENTIFIED", "Product Unidentified"),
 	TALEND_DI("DI","Data Integation"), 
 	TALEND_DQ("DQ", "Data Quality"), 
 	TALEND_MDM("MDM", "Master Data Management"), 

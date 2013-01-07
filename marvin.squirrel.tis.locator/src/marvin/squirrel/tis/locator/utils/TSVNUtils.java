@@ -82,7 +82,7 @@ public class TSVNUtils {
 				return index;
 			}
 		}
-		return -1;
+		return 0;
 	}
 	
 	public static int indexSVNVersion(TSVNVersionEnum svnVersion){
@@ -94,6 +94,6 @@ public class TSVNUtils {
 				return index;
 			}
 		}
-		return -1;
+		return 0;
 	}
 }

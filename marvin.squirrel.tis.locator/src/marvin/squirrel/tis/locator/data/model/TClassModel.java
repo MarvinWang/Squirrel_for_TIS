@@ -3,12 +3,15 @@
  */
 package marvin.squirrel.tis.locator.data.model;
 
+import marvin.squirrel.tis.locator.constants.TPropertyForModel;
+
 /**
  * @author Marvin
  * @date 2012-12-23
  */
-public class TClassModel {
+public class TClassModel{
 
+	private TFunctionModel functionModel;
 	
 	private String className;
 	
@@ -20,9 +23,12 @@ public class TClassModel {
 	
 	private String desc;
 	
-	public TClassModel(){}
+	public TClassModel(){
+		super();
+	}
 	
 	public TClassModel(String className){
+		this();
 		this.className = className;
 	}
 
@@ -37,7 +43,10 @@ public class TClassModel {
 	 * @param className the className to set
 	 */
 	public void setClassName(String className) {
-		this.className = className;
+		if(this.className != className){
+			this.className = className;
+			functionModel.firePropertyChange(TPropertyForModel.CLASS_NAME, this.className, className);
+		}
 	}
 
 	/**
@@ -51,7 +60,10 @@ public class TClassModel {
 	 * @param method the method to set
 	 */
 	public void setMethod(String method) {
-		this.method = method;
+		if(this.method != null){
+			this.method = method;
+			functionModel.firePropertyChange(TPropertyForModel.CLASS_METHOD, this.method, method);
+		}
 	}
 
 	/**
@@ -73,7 +85,10 @@ public class TClassModel {
 	}
 
 	public void setPackageStr(String packageStr) {
-		this.packageStr = packageStr;
+		if(this.packageStr != packageStr){
+			this.packageStr = packageStr;
+			functionModel.firePropertyChange(TPropertyForModel.CLASS_PACKAGE, this.packageStr, packageStr);
+		}
 	}
 
 	public String getPluginName() {
@@ -81,7 +96,18 @@ public class TClassModel {
 	}
 
 	public void setPluginName(String pluginName) {
-		this.pluginName = pluginName;
+		if(this.pluginName != pluginName){
+			this.pluginName = pluginName;
+			functionModel.firePropertyChange(TPropertyForModel.CLASS_PLUGIN, this.pluginName, pluginName);
+		}
+	}
+
+	public TFunctionModel getFunctionModel() {
+		return functionModel;
+	}
+
+	public void setFunctionModel(TFunctionModel functionModel) {
+		this.functionModel = functionModel;
 	}
 	
 	

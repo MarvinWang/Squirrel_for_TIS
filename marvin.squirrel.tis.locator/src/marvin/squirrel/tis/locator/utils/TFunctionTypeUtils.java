@@ -52,6 +52,6 @@ public class TFunctionTypeUtils {
 				return index;
 			}
 		}
-		return -1;
+		return 0;
 	}
 }

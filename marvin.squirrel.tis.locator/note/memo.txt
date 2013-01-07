@@ -26,6 +26,13 @@
 2. Add tool tips for editor using function name.[Done]
 3. Continue to complete "editor initialization"[Only for SVNs, done].
 
+#Jan. 7, 2012#
+1. Add "Edit" menu for function name list.[Done]
+2. Move "Actions" to view controller from view.[Done]
+3. Add edit action for "Edit" menu item.[Done]
+4. When TFunctionModel attributes are changes, fire property change for listeners. In fact, function name has added this, others left.
+5. Add a default enum for each enum and make a default value for each combo.[Done]
+
 
 
 

@@ -102,7 +102,7 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		String functionName = functionNameTxt.getText();
-		boolean isExist = TModelProxyFactory.getInstance().isFunctionModelExist(functionName);
+		boolean isExist = controller.checkIfFunctionExist();
 		if(isExist){
 			MessageDialog.openWarning(this.getEditorSite().getShell(), "Warning", "The function named \'" + functionName + " \' is existing!");
 		}else{
@@ -269,6 +269,9 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 	
 	protected void regListeners(){
 		regFunctionNameTxtListener();
+		regClassNameTxtListener();
+		regMethodNameTxtListener();
+		regPluginNameTxtListener();
 	}
 	
 	protected void regFunctionNameTxtListener(){
@@ -277,6 +280,34 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 			@Override
 			public void modifyText(ModifyEvent e) {
 				controller.doFunctionNameChange();
+			}});
+	}
+	
+	protected void regClassNameTxtListener(){
+		classNameTxt.addModifyListener(new ModifyListener(){
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				controller.doClassNameChange();
+			}});
+	}
+	
+	
+	protected void regMethodNameTxtListener(){
+		methodTxt.addModifyListener(new ModifyListener(){
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				controller.doMethodNameChange();
+			}});
+	}
+	
+	protected void regPluginNameTxtListener(){
+		pluginNameTxt.addModifyListener(new ModifyListener(){
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				controller.doPluginNameChange();
 			}});
 	}
 
@@ -423,8 +454,17 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		this.firePropertyChange(PROP_DIRTY);
 		if(TPropertyForModel.FUNCTION_NAME.equals(evt.getPropertyName())){
 			String functionName = (String)evt.getNewValue();
-//			this.setPartName(TStringUtils.makePartNameShort(functionName));
 			this.setTitleToolTip(functionName);
+		}else if(TPropertyForModel.CLASS_NAME.equals(evt.getPropertyName())){
+			String className = (String)evt.getNewValue();
+		}else if(TPropertyForModel.CLASS_METHOD.equals(evt.getPropertyName())){
+			
+		}else if(TPropertyForModel.CLASS_PACKAGE.equals(evt.getPropertyName())){
+			
+		}else if(TPropertyForModel.FUNCTION_TYPE.equals(evt.getPropertyName())){
+			
+		}else if(TPropertyForModel.FUNCTION_PRODUCT.equals(evt.getPropertyName())){
+			
 		}
 	}
 

@@ -19,9 +19,9 @@ public class TFunctionModel extends TAbstractModel{
 	
 	private String name;
 	
-	private TFunctionTypeEnum type;
+	private TFunctionTypeEnum type = TFunctionTypeEnum.REP_UNIDENTIFIED;
 	
-	private TProductsEnum product;
+	private TProductsEnum product = TProductsEnum.TALEND_UNIDENTIFIED;
 	
 	private TClassModel classModel;
 	
@@ -62,7 +62,10 @@ public class TFunctionModel extends TAbstractModel{
 	}
 
 	public void setType(TFunctionTypeEnum type) {
-		this.type = type;
+		if(!this.type.equals(type)){
+			this.type = type;
+			firePropertyChange(TPropertyForModel.FUNCTION_TYPE, this.type, type);
+		}
 	}
 
 	public TProductsEnum getProduct() {
@@ -70,7 +73,10 @@ public class TFunctionModel extends TAbstractModel{
 	}
 
 	public void setProduct(TProductsEnum product) {
-		this.product = product;
+		if(!this.product.equals(product)){
+			this.product = product;
+			firePropertyChange(TPropertyForModel.FUNCTION_PRODUCT, this.product, product);
+		}
 	}
 
 	public String getDesc() {
@@ -78,7 +84,10 @@ public class TFunctionModel extends TAbstractModel{
 	}
 
 	public void setDesc(String desc) {
-		this.desc = desc;
+		if(this.desc != desc){
+			this.desc = desc;
+			firePropertyChange(TPropertyForModel.FUNCTION_DESC, this.desc, desc);			
+		}
 	}
 
 	public TClassModel getClassModel() {
@@ -87,6 +96,7 @@ public class TFunctionModel extends TAbstractModel{
 
 	public void setClassModel(TClassModel classModel) {
 		this.classModel = classModel;
+		this.classModel.setFunctionModel(this);
 	}
 
 	public TVersionInfoModel getVersionInfoModel() {

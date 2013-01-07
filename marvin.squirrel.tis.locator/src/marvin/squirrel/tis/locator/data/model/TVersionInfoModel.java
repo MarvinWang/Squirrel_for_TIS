@@ -14,9 +14,9 @@ import marvin.squirrel.tis.locator.enums.TSVNVersionEnum;
  */
 public class TVersionInfoModel {
 
-	private TSVNSourceEnum svnDir;
+	private TSVNSourceEnum svnDir = TSVNSourceEnum.TSVN_UNIDENTIFIED;
 	
-	private TSVNVersionEnum version;
+	private TSVNVersionEnum version = TSVNVersionEnum.VERSION_UNIDENTIFIED;
 	
 	public TVersionInfoModel(){}
 

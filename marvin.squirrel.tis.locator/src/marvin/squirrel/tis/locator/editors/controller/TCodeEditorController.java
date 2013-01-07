@@ -28,6 +28,8 @@ public class TCodeEditorController {
 	
 	private TCodeLocatorEditor editor;
 	private TCodeLocatorEditorInput input;
+	
+	private TFunctionModel functionModel;
 
 	public TCodeEditorController(TCodeLocatorEditor editor){
 		this.editor = editor;
@@ -35,7 +37,7 @@ public class TCodeEditorController {
 	}
 	
 	public void init(){
-		TFunctionModel functionModel = input.getFunctionModel();
+		functionModel = input.getFunctionModel();
 //		Function Name
 		String functionName = functionModel.getName();
 		editor.getFunctionNameTxt().setText(functionName);
@@ -75,10 +77,26 @@ public class TCodeEditorController {
 	}
 	
 	public void doFunctionNameChange(){
-		TFunctionModel functionmodel = input.getFunctionModel();
+//		TFunctionModel functionmodel = input.getFunctionModel();
 		String functionName = editor.getFunctionNameTxt().getText();
-		functionmodel.setName(functionName);
+		functionModel.setName(functionName);
 	}
+	
+	public void doClassNameChange(){
+		String className = editor.getClassNameTxt().getText();
+		functionModel.getClassModel().setClassName(className);
+	}
+	
+	public void doMethodNameChange(){
+		String methodName = editor.getMethodTxt().getText();
+		functionModel.getClassModel().setMethod(methodName);
+	}
+	
+	public void doPluginNameChange(){
+		String pluginName = editor.getPluginNameTxt().getText();
+		functionModel.getClassModel().setPluginName(pluginName);
+	}
+	
 	
 	public void doSave(IProgressMonitor monitor) throws TDataSourceException{
 		this.input = (TCodeLocatorEditorInput)editor.getEditorInput();
@@ -92,6 +110,18 @@ public class TCodeEditorController {
 		
 	}
 	
+	public boolean checkIfFunctionExist(){
+		boolean exist = false;
+		
+		return exist;
+	}
+	
+	/**
+	 * 
+	 * @param functionName
+	 * @return
+	 * @deprecated
+	 */
 	public boolean checkIfFunctionExist(String functionName){
 		return TModelProxyFactory.getInstance().isFunctionModelExist(functionName);
 	}

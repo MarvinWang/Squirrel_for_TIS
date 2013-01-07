@@ -9,6 +9,7 @@ package marvin.squirrel.tis.locator.enums;
  */
 public enum TSVNSourceEnum {
 
+	TSVN_UNIDENTIFIED("Unidentified", ""),
 	TSVN_SOURCE_TOS("tos", "www.talendforge.org/svn/tos"),
 	TSVN_SOURCE_TIS_SHARED("tis_shared","www.talendforge.org/svn/tis_shared"),
 	TSVN_SOURCE_TIS_PRIVATE("tis_private","www.talendforge.org/svn/tis_private"),

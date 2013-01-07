@@ -26,6 +26,12 @@ public class TGlobalModel {
 		return functionModels;
 	}
 	
+	/**
+	 * 
+	 * @param functionName
+	 * @return
+	 * @deprecated
+	 */
 	public TFunctionModel lookupByFunctionName(String functionName){
 		for(TFunctionModel functionModel : functionModels){
 			if(functionName.equals(functionModel.getName()))
@@ -34,10 +40,33 @@ public class TGlobalModel {
 		return null;
 	}
 	
+	public TFunctionModel lookupSameFunctionName(String id, String functionName){
+		for(TFunctionModel functionModel : functionModels){
+			if(!id.equals(functionModel.getId()) && functionName.equals(functionModel.getName()))
+				return functionModel;
+		}
+		return null;
+	}
+	
 	/**
 	 * 
+	 * @param functionId
 	 * @param functionName
 	 * @return
+	 */
+	public boolean hasSameFunctionName(String functionId, String functionName){
+		TFunctionModel functionModel = lookupSameFunctionName(functionId,functionName);
+		if(functionModel != null)
+			return true;
+		else
+			return false;
+	}
+	
+	/**
+	 *
+	 * @param functionName
+	 * @return
+	 * @deprecated {@link #hasSameFunctionName(String, String)}
 	 */
 	public boolean hasFunctionName(String functionName){
 		TFunctionModel functionModel = lookupByFunctionName(functionName);

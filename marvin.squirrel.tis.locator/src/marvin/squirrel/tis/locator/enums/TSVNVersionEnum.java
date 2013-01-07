@@ -10,6 +10,7 @@ package marvin.squirrel.tis.locator.enums;
  */
 public enum TSVNVersionEnum {
 
+	VERSION_UNIDENTIFIED("VERSION_UNIDENTIFIED", "Version Unidentified", ""),
 	VERSION_B4_UP("VERSION_B4_UP", "Branch4_upper",""),
 	VERSION_B5_1("VERSION_B5_1","Branch5.1",""),
 	VERSION_B5_1_UP("VERSION_B5_1_UP","Branch5.1_upper",""),
