@@ -40,7 +40,7 @@ public class TFunctionTypeUtils {
 				return type;
 			}
 		}
-		return null;
+		return TFunctionTypeEnum.REP_UNIDENTIFIED;
 	}
 	
 	public static int indexFunctionType(TFunctionTypeEnum functionType){

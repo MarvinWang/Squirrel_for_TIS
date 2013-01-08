@@ -55,7 +55,7 @@ public class TSVNUtils {
 				return svnSource;
 			}
 		}
-		return null;
+		return TSVNSourceEnum.TSVN_UNIDENTIFIED;
 	}
 	
 	/**
@@ -63,14 +63,14 @@ public class TSVNUtils {
 	 * @param svnVersionName
 	 * @return
 	 */
-	public static TSVNVersionEnum getSVNVersion(String svnVersionName){
+	public static TSVNVersionEnum getSVNVersion(String svnVersion){
 		TSVNVersionEnum[] all = TSVNVersionEnum.values();
-		for(TSVNVersionEnum svnVersion : all){
-			if(svnVersion.getName().equals(svnVersionName)){
-				return svnVersion;
+		for(TSVNVersionEnum tmp : all){
+			if(tmp.getVersion().equals(svnVersion)){
+				return tmp;
 			}
 		}
-		return null;
+		return TSVNVersionEnum.VERSION_UNIDENTIFIED;
 	}
 
 	public static int indexSVNSource(TSVNSourceEnum svnSource){

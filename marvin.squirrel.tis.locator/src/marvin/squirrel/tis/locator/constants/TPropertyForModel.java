@@ -24,4 +24,8 @@ public class TPropertyForModel {
 	public static final String CLASS_METHOD = "CLASS_METHOD";
 	
 	public static final String CLASS_PLUGIN = "CLASS_PLUGIN";
+	
+	public static final String SVN_REPOSITORY = "SVN_REPOSITORY";
+	
+	public static final String SVN_VERSION = "SVN_VERSION";
 }

@@ -97,6 +97,30 @@ public class TCodeEditorController {
 		functionModel.getClassModel().setPluginName(pluginName);
 	}
 	
+	public void doDescChange(){
+		String desc = editor.getDescriptionTxt().getText();
+		functionModel.setDesc(desc);
+	}
+	
+	public void doTypeChange(){
+		String type = editor.getTypeCombo().getText();
+		functionModel.setType(TFunctionTypeUtils.getFunctionType(type));
+	}
+	
+	public void doProductChange(){
+		String product = editor.getProductCombo().getText();
+		functionModel.setProduct(TProductUtils.getProduct(product));
+	}
+	
+	public void doRepositoryChange(){
+		String repository = editor.getRepositoryCombo().getText();
+		functionModel.getVersionInfoModel().setSvnDir(TSVNUtils.getSVNSource(repository));
+	}
+	
+	public void doSvnVersionChange(){
+		String svnVersion = editor.getSvnVersionCombo().getText();
+		functionModel.getVersionInfoModel().setVersion(TSVNUtils.getSVNVersion(svnVersion));
+	}
 	
 	public void doSave(IProgressMonitor monitor) throws TDataSourceException{
 		this.input = (TCodeLocatorEditorInput)editor.getEditorInput();

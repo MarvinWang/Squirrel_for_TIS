@@ -27,11 +27,11 @@ public class TProductUtils {
 	public static TProductsEnum getProduct(String productName){
 		TProductsEnum[] all = TProductsEnum.values();
 		for(TProductsEnum product : all){
-			if(product.getName().equals(product)){
+			if(product.getName().equals(productName)){
 				return product;
 			}
 		}
-		return null;
+		return TProductsEnum.TALEND_UNIDENTIFIED;
 	}
 	
 	public static int indexProduct(TProductsEnum product){

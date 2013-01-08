@@ -29,6 +29,10 @@ public enum TProductsEnum {
 		this.fullName = fullName;
 	}
 
+	/**
+	 * Gets the name of object like "<code>DI</code>", "<code>DQ</code>".
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}

@@ -60,7 +60,7 @@ public class TClassModel{
 	 * @param method the method to set
 	 */
 	public void setMethod(String method) {
-		if(this.method != null){
+		if(this.method != method){
 			this.method = method;
 			functionModel.firePropertyChange(TPropertyForModel.CLASS_METHOD, this.method, method);
 		}

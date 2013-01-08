@@ -105,6 +105,7 @@ public class TFunctionModel extends TAbstractModel{
 
 	public void setVersionInfoModel(TVersionInfoModel versionInfoModel) {
 		this.versionInfoModel = versionInfoModel;
+		this.versionInfoModel.setFunctionModel(this);
 	}
 
 	/**

@@ -32,7 +32,7 @@ Later, if any other versions is released, it needs to add here. Default value is
       <version>All</version>
     </versionInfo>
   </function>
-  <function id="1301021132153450000" name="Check for DB wizard" type="" product="">
+  <function id="1301021132153450000" name="Check for DB wizard" type="" product="DI">
     <classInfo name="DatabaseForm.java">
       <package>org.talend.repository.metadata</package>
       <plugin>org.talend.repository.metadata</plugin>

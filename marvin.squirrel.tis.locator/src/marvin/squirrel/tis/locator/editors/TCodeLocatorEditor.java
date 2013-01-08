@@ -7,16 +7,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import marvin.squirrel.tis.locator.constants.TPropertyForModel;
-import marvin.squirrel.tis.locator.data.handler.TModelProxyFactory;
-import marvin.squirrel.tis.locator.data.model.TFunctionModel;
 import marvin.squirrel.tis.locator.editors.controller.TCodeEditorController;
-import marvin.squirrel.tis.locator.enums.TFunctionTypeEnum;
 import marvin.squirrel.tis.locator.exception.TDataSourceException;
 import marvin.squirrel.tis.locator.i18n.Messages;
 import marvin.squirrel.tis.locator.utils.TFunctionTypeUtils;
 import marvin.squirrel.tis.locator.utils.TProductUtils;
 import marvin.squirrel.tis.locator.utils.TSVNUtils;
-import marvin.squirrel.tis.locator.utils.TStringUtils;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -25,6 +21,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
@@ -272,6 +270,10 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 		regClassNameTxtListener();
 		regMethodNameTxtListener();
 		regPluginNameTxtListener();
+		regTypeComboListener();
+		regProductComboListener();
+		regRepositoryComboListener();
+		regSvnVersionComboListener();
 	}
 	
 	protected void regFunctionNameTxtListener(){
@@ -309,6 +311,47 @@ public class TCodeLocatorEditor extends EditorPart implements PropertyChangeList
 			public void modifyText(ModifyEvent e) {
 				controller.doPluginNameChange();
 			}});
+	}
+	
+	protected void regFunctionDescTxtListener(){
+		descriptionTxt.addModifyListener(new ModifyListener(){
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				controller.doDescChange();
+			}});
+	}
+	
+	protected void regTypeComboListener(){
+		typeCombo.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e) {
+				controller.doTypeChange();
+			}
+		});
+	}
+	
+	protected void regProductComboListener(){
+		productCombo.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e) {
+				controller.doProductChange();
+			}
+		});
+	}
+	
+	protected void regRepositoryComboListener(){
+		repositoryCombo.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e) {
+				controller.doRepositoryChange();
+			}
+		});
+	}
+	
+	protected void regSvnVersionComboListener(){
+		svnVersionCombo.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e) {
+				controller.doSvnVersionChange();
+			}
+		});
 	}
 
 	/* (non-Javadoc)

@@ -3,6 +3,7 @@
  */
 package marvin.squirrel.tis.locator.data.model;
 
+import marvin.squirrel.tis.locator.constants.TPropertyForModel;
 import marvin.squirrel.tis.locator.enums.TSVNSourceEnum;
 import marvin.squirrel.tis.locator.enums.TSVNVersionEnum;
 
@@ -13,6 +14,8 @@ import marvin.squirrel.tis.locator.enums.TSVNVersionEnum;
  * @date Dec 27, 2012
  */
 public class TVersionInfoModel {
+	
+	private TFunctionModel functionModel;
 
 	private TSVNSourceEnum svnDir = TSVNSourceEnum.TSVN_UNIDENTIFIED;
 	
@@ -25,7 +28,10 @@ public class TVersionInfoModel {
 	}
 
 	public void setSvnDir(TSVNSourceEnum svnDir) {
-		this.svnDir = svnDir;
+		if(!this.svnDir.equals(svnDir)){
+			this.svnDir = svnDir;
+			functionModel.firePropertyChange(TPropertyForModel.SVN_REPOSITORY, this.svnDir, svnDir);
+		}
 	}
 
 	public TSVNVersionEnum getVersion() {
@@ -33,7 +39,24 @@ public class TVersionInfoModel {
 	}
 
 	public void setVersion(TSVNVersionEnum version) {
-		this.version = version;
+		if(!this.version.equals(version)){
+			this.version = version;
+			functionModel.firePropertyChange(TPropertyForModel.SVN_VERSION, this.version, version);
+		}
+	}
+
+	/**
+	 * @return the functionModel
+	 */
+	public TFunctionModel getFunctionModel() {
+		return functionModel;
+	}
+
+	/**
+	 * @param functionModel the functionModel to set
+	 */
+	public void setFunctionModel(TFunctionModel functionModel) {
+		this.functionModel = functionModel;
 	}
 
 	
