@@ -27,6 +27,11 @@ public class TClassModel{
 		super();
 	}
 	
+	public TClassModel(TFunctionModel functionModel){
+		super();
+		this.functionModel = functionModel;
+	}
+	
 	public TClassModel(String className){
 		this();
 		this.className = className;

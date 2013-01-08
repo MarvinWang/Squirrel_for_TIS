@@ -11,7 +11,7 @@ package marvin.squirrel.tis.locator.enums;
  */
 public enum TFunctionTypeEnum {
 
-	REP_UNIDENTIFIED("REP_UNIDENTIFIED", "REP_Unidentified", "This is a default choice."),
+	REP_UNIDENTIFIED("REP_UNIDENTIFIED", "Unidentified", "This is a default choice."),
 	REP_JOB("REP_JOB", "REP_Job",""),
 	REP_CONTEXT("REP_CONTEXT","REP_Context",""), 
 	REP_DBCONNECTION("REP_DBCONNECTION", "REP_DBConnection",""), 

@@ -22,6 +22,10 @@ public class TVersionInfoModel {
 	private TSVNVersionEnum version = TSVNVersionEnum.VERSION_UNIDENTIFIED;
 	
 	public TVersionInfoModel(){}
+	
+	public TVersionInfoModel(TFunctionModel functionModel){
+		this.functionModel = functionModel;
+	}
 
 	public TSVNSourceEnum getSvnDir() {
 		return svnDir;

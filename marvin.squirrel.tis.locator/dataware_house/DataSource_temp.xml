@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <global>
-  <function id="1301021132153430000" name="Retrieve Schema for displaying tables" type="" product="DI">
+  <!--test......-->
+  <function id="1301021132153430000" name="Retrieve Schema for displaying tables" type="Unidentified" product="DI">
     <classInfo name="SelectorTreeViewerProvider.java">
       <package>org.talend.repository.ui.wizards.metadata.table.database</package>
       <plugin>org.talend.repository.metadata</plugin>
@@ -9,10 +10,10 @@
     </classInfo>
     <desc>In retrieve schema wizard, when you are in the second wizard page, you click the + to expand the database tree to display all tables.</desc>
     <versionInfo url="tos">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153440000" name="Retrieve Schema for right-clicking" type="" product="DI">
+  <function id="1301021132153440000" name="Retrieve Schema for right-clicking" type="Unidentified" product="DI">
     <classInfo name="AbstractCreateTableAction.java">
       <package>org.talend.repository.metadata</package>
       <plugin>org.talend.repository.metadata</plugin>
@@ -20,10 +21,10 @@
     </classInfo>
     <desc>When you right-click a db connection, select "Retrieve Schema", it will triger this action.</desc>
     <versionInfo url="tos">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153450000" name="Check for DB wizard" type="" product="">
+  <function id="1301021132153450000" name="Check for DB wizard" type="Unidentified" product="DI">
     <classInfo name="DatabaseForm.java">
       <package>org.talend.repository.metadata</package>
       <plugin>org.talend.repository.metadata</plugin>
@@ -31,7 +32,7 @@
     </classInfo>
     <desc></desc>
     <versionInfo url="tos">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
   <function id="1301021132153450001" name="Finish on Context Group of Repository" type="REP_Context" product="DI">
@@ -41,44 +42,44 @@
       <method>boolean performFinish()</method>
     </classInfo>
     <desc></desc>
-    <versionInfo url="">
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153460000" name="Finish on DB connection wizard" type="" product="DI">
+  <function id="1301021132153460000" name="Finish on DB connection wizard" type="Unidentified" product="DI">
     <classInfo name="DatabaseWizard.java">
       <package>org.talend.repository.ui.wizards.metadata.connection.database</package>
       <plugin>org.talend.repository.metadata</plugin>
       <method>boolean performFinish()</method>
     </classInfo>
     <desc></desc>
-    <versionInfo url="">
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153460001" name="Choose a remote connection" type="" product="DI">
+  <function id="1301021132153460001" name="Choose a remote connection" type="Unidentified" product="DI">
     <classInfo name="">
       <package></package>
       <plugin></plugin>
       <method></method>
     </classInfo>
     <desc></desc>
-    <versionInfo url="">
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153470000" name="Run a job" type="" product="DI">
+  <function id="1301021132153470000" name="Run a job" type="Unidentified" product="DI">
     <classInfo name="ProcessComposite.java">
       <package>org.talend.designer.runprocess.ui</package>
       <plugin>org.talend.designer.runprocess</plugin>
       <method>execButtonPressed()</method>
     </classInfo>
     <desc></desc>
-    <versionInfo url="">
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153470001" name="Data Viewer" type="" product="DI">
+  <function id="1301021132153470001" name="Data Viewer" type="Unidentified" product="DI">
     <classInfo name="ViewDataSchemaAction.java">
       <package>org.talend.designer.component.preview</package>
       <plugin>org.talend.designer.component.preview</plugin>
@@ -86,29 +87,29 @@
     </classInfo>
     <desc></desc>
     <versionInfo url="tos">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153480000" name="Run a remote job" type="" product="DI">
+  <function id="1301021132153480000" name="Run a remote job" type="Unidentified" product="DI">
     <classInfo name="RunRemoteProcessContext.java">
       <package>org.talend.designer.runprocess.remote</package>
       <plugin>org.talend.designer.runprocess.remote</plugin>
       <method>exe(Shell)</method>
     </classInfo>
     <desc>In the RUN job view, select a remote job server you defined in preference, then clieck "RUN" button.</desc>
-    <versionInfo url="">
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153480001" name="Get context parameters for command line" type="" product="DI">
+  <function id="1301021132153480001" name="Get context parameters for command line" type="Unidentified" product="DI">
     <classInfo name="JobScriptsManager.java">
       <package>org.talend.repository.ui.wizards.exportjob.scriptsmanager</package>
       <plugin>org.talend.repository</plugin>
       <method>String getSettingContextParametersValue()</method>
     </classInfo>
     <desc>When run a job in a remote job server, it will first generate the "context_para" parameters.</desc>
-    <versionInfo url="">
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
   <function id="1301021132153490000" name="Branch Management" type="REP_View" product="DI">
@@ -118,8 +119,8 @@
       <method>run()</method>
     </classInfo>
     <desc>This is an action for switch management, there is a button in repository view when the current is remote project.</desc>
-    <versionInfo>
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
   <function id="1301021132153490001" name="Create launcher file for remote job server" type="REP_View" product="DI">
@@ -129,11 +130,11 @@
       <method>getLauncher(args...)</method>
     </classInfo>
     <desc>This method will create a file named *.sh or *.bat for a job that runs in a remote job server.</desc>
-    <versionInfo url="">
-      <version>All</version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153500000" name="Remote Preference" type="" product="DI">
+  <function id="1301021132153500000" name="Remote Preference" type="Unidentified" product="DI">
     <classInfo name="">
       <package></package>
       <plugin></plugin>
@@ -141,7 +142,7 @@
     </classInfo>
     <desc></desc>
     <versionInfo url="tis_shared">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
   <function id="1301021132153500001" name="Rename Action" type="REP_View" product="DI">
@@ -152,10 +153,10 @@
     </classInfo>
     <desc></desc>
     <versionInfo url="tos">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153510000" name="Linker from table to Tree" type="COMP" product="DI">
+  <function id="1301021132153510000" name="Linker from table to Tree" type="Unidentified" product="DI">
     <classInfo name="TableToTreeLinker.java">
       <package>org.talend.commons.ui.swt.linking</package>
       <plugin>org.talend.commons.ui</plugin>
@@ -163,10 +164,10 @@
     </classInfo>
     <desc>Some component like tFileOutputMSXML, it needs a linker from schema. First, create a job and drag "tLogRow" and "tFileOutputMSXML" into job, then add schemas for tLogRow and make a line between the two components. Then double click "tFileOutputMSXML", and make a line from left table to right tree.</desc>
     <versionInfo url="tos">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153510001" name="Query Text in Component View" type="" product="DI">
+  <function id="1301021132153510001" name="Query Text in Component View" type="Unidentified" product="DI">
     <classInfo name="SqlMemoController.java">
       <package>org.talend.designer.core.ui.editor.properties.controllers</package>
       <plugin>org.talend.designer.core</plugin>
@@ -174,10 +175,10 @@
     </classInfo>
     <desc></desc>
     <versionInfo url="tos">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153520000" name="Check out a revision of job" type="" product="DI">
+  <function id="1301021132153520000" name="Check out a revision of job" type="Unidentified" product="DI">
     <classInfo name="CheckoutAction.java">
       <package>org.talend.repository.svnprovider.ui.history</package>
       <plugin>org.talend.repository.svnprovider</plugin>
@@ -185,10 +186,10 @@
     </classInfo>
     <desc>This action is from SVN History in Job View, when right-clicking the revision, then select "check out", it will be triggered.</desc>
     <versionInfo url="tis_shared">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301021132153530000" name="tMap Component: edit columns for output table" type="" product="DI">
+  <function id="1301021132153530000" name="tMap Component: edit columns for output table" type="Unidentified" product="DI">
     <classInfo name="">
       <package></package>
       <plugin></plugin>
@@ -196,19 +197,40 @@
     </classInfo>
     <desc></desc>
     <versionInfo url="tis_shared">
-      <version>All</version>
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <function id="1301030845010800000" name="okokokokok">
-    <classInfo>
+  <function id="1301081158011700000" name="Click button in Component View to show all tables" type="Unidentified" product="Unidentified">
+    <classInfo name="DbTableController.java">
       <package></package>
       <plugin></plugin>
-      <method></method>
+      <method>widgetSelected(SelectionEvent e)</method>
     </classInfo>
     <desc></desc>
-    <versionInfo>
-      <version></version>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
     </versionInfo>
   </function>
-  <!--test......-->
+  <function id="1301081158011700000" name="Click button in Component View to show all tables" type="Unidentified" product="Unidentified">
+    <classInfo name="DbTableController.java">
+      <package></package>
+      <plugin></plugin>
+      <method>widgetSelected(SelectionEvent e)</method>
+    </classInfo>
+    <desc></desc>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
+    </versionInfo>
+  </function>
+  <function id="1301081158011700000" name="Click button in Component View to show all tables" type="Unidentified" product="Unidentified">
+    <classInfo name="DbTableController.java">
+      <package></package>
+      <plugin></plugin>
+      <method>widgetSelected(SelectionEvent e)</method>
+    </classInfo>
+    <desc></desc>
+    <versionInfo url="Unidentified">
+      <version>Unidentified</version>
+    </versionInfo>
+  </function>
 </global>

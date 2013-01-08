@@ -46,6 +46,7 @@ public class TDataSourceWriter {
 	 */
 	public void pushModelToFile() throws TDataSourceException{
 		File outputFile = TDataSourceManager.fetchDataSourceTmpFile();
+//		File outputFile = TDataSourceManager.fetchDataSourceFile();
 		OutputFormat xmlFormat = OutputFormat.createPrettyPrint();
 		xmlFormat.setEncoding("utf-8");
 		XMLWriter writer;

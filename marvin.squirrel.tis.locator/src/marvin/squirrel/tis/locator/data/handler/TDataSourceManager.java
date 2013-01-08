@@ -43,6 +43,11 @@ public class TDataSourceManager {
 		return datasourceFile;
 	}
 	
+	/**
+	 * It is just used to test the output file.
+	 * @return
+	 * @throws TDataSourceException
+	 */
 	public static File fetchDataSourceTmpFile() throws TDataSourceException {
 		File datasourceFile = null;
 		Bundle bundle = Platform.getBundle(TISLocatorPlugin.PLUGIN_ID);

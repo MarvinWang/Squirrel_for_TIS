@@ -36,8 +36,8 @@ public class TFunctionModel extends TAbstractModel{
 	 */
 	public TFunctionModel() {
 		super();
-		classModel = new TClassModel();
-		versionInfoModel = new TVersionInfoModel();
+		classModel = new TClassModel(this);
+		versionInfoModel = new TVersionInfoModel(this);
 	}
 	
 	public TFunctionModel(String id, String name) {

@@ -10,13 +10,13 @@ package marvin.squirrel.tis.locator.enums;
  */
 public enum TProductsEnum {
 
-	TALEND_UNIDENTIFIED("UNIDENTIFIED", "Product Unidentified"),
+	TALEND_UNIDENTIFIED("Unidentified", "Product Unidentified"),
 	TALEND_DI("DI","Data Integation"), 
 	TALEND_DQ("DQ", "Data Quality"), 
 	TALEND_MDM("MDM", "Master Data Management"), 
 	TALEND_ESB("ESB", "");
 	
-	private String name;
+	private String name;//Used to display in UI and store in data source file.
 	
 	private String fullName;
 	
