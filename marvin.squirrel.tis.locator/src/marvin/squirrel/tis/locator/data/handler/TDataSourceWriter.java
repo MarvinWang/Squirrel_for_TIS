@@ -98,7 +98,7 @@ public class TDataSourceWriter {
 	}
 	
 	protected void buildHeadComments(Element globalElement){
-		globalElement.addComment("test......");
+//		globalElement.addComment(Messages.get);
 	}
 	
 	protected void buildFunctionElement(Element functionElement, TFunctionModel funcModel){

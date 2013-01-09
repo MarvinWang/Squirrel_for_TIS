@@ -33,6 +33,11 @@
 4. When TFunctionModel attributes are changes, fire property change for listeners. In fact, function name has added this, others left.[Done]
 5. Add a default enum for each enum and make a default value for each combo.[Done]
 
+#Jan. 8, 2012#
+1. Add some comments for DataSource.xml in messages.properties file.
+2. TODO: Add a Messages.getString(id,new String[]{}), require some arguments for getString() method.
+
+
 
 
 
