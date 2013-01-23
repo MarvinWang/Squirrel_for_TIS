@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="marvin.squirrel.tis.locator"
+            class="marvin.squirrel.tis.patcher.views.UpdateSitePatcherView"
+            id="marvin.squirrel.tis.patcher.view.patcher"
+            name="Patcher"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>
