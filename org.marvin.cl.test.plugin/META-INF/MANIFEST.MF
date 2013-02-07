@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ClassLoader Tester
+Bundle-SymbolicName: org.marvin.cl.test.plugin; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.marvin.cl.test.plugin.Activator
+Bundle-Vendor: Marvin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
